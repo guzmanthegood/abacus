@@ -16,6 +16,8 @@ gem 'font-awesome-rails'
 gem 'ionicons-rails'
 
 group :development, :test do
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'byebug', platform: :mri
 end
 

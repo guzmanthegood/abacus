@@ -19,3 +19,9 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Ignore database config
+config/database.yml
+
+# Ignore DS_store apple config
+*/.DS_Store
