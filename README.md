@@ -2,7 +2,7 @@
 
 Abacus is a rails application for software project management.
 
-IMPORTANT! This project is under development.
+**IMPORTANT!** This project is under development.
 
 Because it's at an early stage can be used it as an example of application in Rails 5.
 
@@ -13,9 +13,16 @@ Because it's at an early stage can be used it as an example of application in Ra
 - Multi-user interface
 - Invoice management
 
+### Visual style
+It has been used a open source admin dashboard & control panel theme [AdminLTE](https://almsaeedstudio.com/preview).
+
+Built on top of Bootstrap 3, AdminLTE provides a range of responsive, reusable, and commonly used components.     
+Thanks to [AlmsaeedStudio](https://almsaeedstudio.com)
+
 ## Instalation
-```
+```sh
 $ git clone https://github.com/guzmanweb/abacus
+$ cd abacus
 $ bundle
 $ cp config/database.yml.example config/database.yml
 $ rake db:setup
