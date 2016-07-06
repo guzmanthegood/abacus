@@ -1,4 +1,4 @@
 class StaticController < ApplicationController
-  def home
+  def example
   end
 end
