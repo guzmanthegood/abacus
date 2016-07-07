@@ -1,0 +1,38 @@
+<% content_for :header do %>
+  Usuarios registrados
+<% end %>
+
+<% content_for :breadcrumb do %>
+  <li>
+    <%= link_to '<i class="fa fa-home"></i> Home'.html_safe, root_path %>
+    <li class="active">Usuarios registrados</li>
+<% end %>
+
+
+<p id="notice"><%= notice %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path %>
