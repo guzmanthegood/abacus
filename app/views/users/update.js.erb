@@ -1,0 +1,4 @@
+$("#user_<%=@user.id %>").replaceWith("<%= escape_javascript(render @user) %>");
+$("#notice-content").html("<%= escape_javascript(render 'shared/notice') %>");
+$("#user-form-body").html("<%= escape_javascript(render 'form', user: @user) %>");
+auto_dismissible();

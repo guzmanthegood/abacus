@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  respond_to? :js, :html
 
   def index
     @users = User.all
+    @user = User.new
   end
 
   def show
@@ -18,19 +20,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to @user, notice: 'Se ha creado el nuevo usuario.'
-    else
-      flash.now.alert = "Hubo un error creando el nuevo usuario. Revise el formulario."
-      render :new
+      flash.now.notice = 'Se ha creado el nuevo usuario.'
     end
   end
 
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: 'El usuario ha sido modificado.'
-    else
-      flash.now.alert = "Hubo un error modificando el nuevo usuario. Revise el formulario."
-      render :edit
+      flash.now.notice = 'El usuario ha sido modificado.'
     end
   end
 

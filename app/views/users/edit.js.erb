@@ -1,0 +1,5 @@
+$("#notice-content").html("<%= escape_javascript(render 'shared/notice') %>");
+$("#user-form-title").html("Editar usuario");
+$("#user-form-body").html("<%= escape_javascript(render 'form', user: @user) %>");
+$("#user_name").focus();
+auto_dismissible();

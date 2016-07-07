@@ -10,16 +10,16 @@
 
 <div class="row">
   <div class="col-xs-5">
-    
+
     <div class="box box-primary">
       <div class="box-header">
-        <h3 class="box-title">Usuarios registrados</h3>
+        <h3 id="user-form-title" class="box-title">Nuevo usuario</h3>
       </div>
-      <div class="box-body">
-        hola!
+      <div id="user-form-body" class="box-body">
+        <%= render 'form', user: @user %>
       </div>
     </div>
-
+    
   </div>
 
   <div class="col-xs-7">
@@ -44,18 +44,12 @@
             <tr>
               <th style="width: 10px">#</th>
               <th>Nombre</th>
-              <th>Email</th>
+              <th style="width: 200px">Email</th>
               <th style="width: 200px"></th>
             </tr>
           </thead>
-          <tbody>
-            <% @users.each do |user| %>
-              <tr>
-                <td><%= user.id %></td>
-                <td><%= user.name %></td>
-                <td><%= user.email %></td>
-                <td></td>
-            <% end %>
+          <tbody id="users">
+            <%= render @users %>
           </tbody>
         </table><br>
         <%= link_to new_user_path, class: 'btn btn-primary btn-sm pull-right btn-social' do %>

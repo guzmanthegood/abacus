@@ -1,0 +1,4 @@
+$("<%= escape_javascript(render @user) %>").appendTo("#users");
+$("#notice-content").html("<%= escape_javascript(render 'shared/notice') %>");
+$("#user-form-body").html("<%= escape_javascript(render 'form', user: @user) %>");
+auto_dismissible();
