@@ -14,6 +14,7 @@ gem 'turbolinks', '~> 5'
 gem 'jquery-rails'
 gem 'font-awesome-rails'
 gem 'ionicons-rails'
+gem 'bootstrap_form'
 
 
 group :development, :test do

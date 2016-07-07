@@ -18,23 +18,25 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to @user, notice: 'User was successfully created.'
+      redirect_to @user, notice: 'Se ha creado el nuevo usuario.'
     else
+      flash.now.alert = "Hubo un error creando el nuevo usuario. Revise el formulario."
       render :new
     end
   end
 
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
+      redirect_to @user, notice: 'El usuario ha sido modificado.'
     else
+      flash.now.alert = "Hubo un error modificando el nuevo usuario. Revise el formulario."
       render :edit
     end
   end
 
   def destroy
     @user.destroy
-    redirect_to users_url, notice: 'User was successfully destroyed.'
+    redirect_to users_url, notice: 'Se ha eliminado el usuario.'
   end
 
   private

@@ -1,38 +1,74 @@
 <% content_for :header do %>
-  Usuarios registrados
+  Gestión de usuarios
 <% end %>
 
 <% content_for :breadcrumb do %>
   <li>
     <%= link_to '<i class="fa fa-home"></i> Home'.html_safe, root_path %>
-    <li class="active">Usuarios registrados</li>
+    <li class="active">Gestión de usuarios</li>
 <% end %>
 
+<div class="row">
+  <div class="col-xs-5">
+    
+    <div class="box box-primary">
+      <div class="box-header">
+        <h3 class="box-title">Usuarios registrados</h3>
+      </div>
+      <div class="box-body">
+        hola!
+      </div>
+    </div>
 
-<p id="notice"><%= notice %></p>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class="col-xs-7">
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <!-- box -->
+    <div class="box box-warning">
+      <div class="box-header">
+        <h3 class="box-title">Usuarios registrados</h3>
+        <div class="box-tools">
+          <div style="width: 200px;" class="input-group input-group-sm">
+            <input type="text" placeholder="Buscar..." class="form-control pull-right" name="table_search">
+            <div class="input-group-btn">
+              <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="box-body">
+        <table class="table table-bordered table-hover index">
+          <thead>
+            <tr>
+              <th style="width: 10px">#</th>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th style="width: 200px"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td><%= user.id %></td>
+                <td><%= user.name %></td>
+                <td><%= user.email %></td>
+                <td></td>
+            <% end %>
+          </tbody>
+        </table><br>
+        <%= link_to new_user_path, class: 'btn btn-primary btn-sm pull-right btn-social' do %>
+          <i class="fa fa-plus"></i>
+          <b>Nuevo usuario</b>
+        <% end %>
+        </a>
+      </div>
 
-<br>
+    </div>
+    <!-- /.box -->
 
-<%= link_to 'New User', new_user_path %>
+
+
+  </div>
+</div>
