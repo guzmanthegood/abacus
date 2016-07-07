@@ -15,6 +15,7 @@ gem 'jquery-rails'
 gem 'font-awesome-rails'
 gem 'ionicons-rails'
 
+
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug', platform: :mri
