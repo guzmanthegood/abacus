@@ -1,0 +1,12 @@
+<% content_for :header do %>
+  Página de inicio<small>Descripción opcional</small>
+<% end %>
+
+<% content_for :breadcrumb do %>
+  <li>
+    <%= link_to '<i class="fa fa-home"></i> Home'.html_safe, root_path %>
+    <li class="active">Proyectos</li>
+<% end %>
+
+Hola, esto es la <b>Home</b><br>
+Edítala en: app/views/static/home.html.erb
