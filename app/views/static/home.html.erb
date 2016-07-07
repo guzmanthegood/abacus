@@ -1,24 +1,12 @@
-<!-- Main Header -->
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <section class="content-header">
-    <h1>
-      Page Header
-      <small>Optional description</small>
-    </h1>
-    <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-      <li class="active">Here</li>
-    </ol>
-  </section>
+<% content_for :header do %>
+  Página de inicio<small>Descripción opcional</small>
+<% end %>
 
-  <!-- Main content -->
-  <section class="content">
+<% content_for :breadcrumb do %>
+  <li>
+    <%= link_to '<i class="fa fa-home"></i> Home'.html_safe, root_path %>
+    <li class="active">Proyectos</li>
+<% end %>
 
-    <!-- Your Page Content Here -->
-
-  </section>
-  <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
+Hola, esto es la <b>Home</b><br>
+Edítala en: app/views/static/home.html.erb

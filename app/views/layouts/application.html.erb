@@ -13,10 +13,21 @@
 
   <body class="hold-transition skin-blue fixed <%= controller.controller_name %>">
     <div class="wrapper">
-      <%= render 'shared/header' %>
+      <%= render 'shared/navbar' %>
       <%= render 'shared/sidebar' %>
 
-      <%= yield %>
+      <div class="content-wrapper">
+        <section class="content-header">
+          <h1><%= yield :header %></h1>
+          <ol class="breadcrumb">
+            <%= yield :breadcrumb %>
+          </ol>
+        </section>
+
+        <section class="content">
+          <%= yield %>
+        </section>
+      </div>
 
       <%= render 'shared/footer' %>
     </div>
