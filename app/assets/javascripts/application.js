@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/effect
 //= require adminlte/bootstrap
 //= require adminlte/app
 //= require adminlte/plugins/fastclick/fastclick

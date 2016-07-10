@@ -1,3 +1,8 @@
 var error = <%= @user.errors.count == 0 ? 0 : 1 %>;
-if (!error) {$("#user_<%=@user.id %>").replaceWith("<%= escape_javascript(render @user) %>")};
+if (!error) {
+	$("#user_<%=@user.id %>").replaceWith("<%= escape_javascript(render @user) %>");
+	$("#user_<%=@user.id %>").animate({backgroundColor: "#008D4C", color: "#FFF"}, 500).delay(500)
+													 .animate({backgroundColor: "#FFF", color: "#333"}, 500 );
+	bind_user_click("<%=@user.id %>");
+};
 $("#user-form-body").html("<%= escape_javascript(render 'form', user: @user) %>");
