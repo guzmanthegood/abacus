@@ -18,21 +18,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      flash.now.notice = 'Se ha creado el nuevo usuario.'
-    end
+    @user = User.create(user_params)
   end
 
   def update
-    if @user.update(user_params)
-      flash.now.notice = 'El usuario ha sido modificado.'
-    end
+    @user.update(user_params)
   end
 
   def destroy
     @user.destroy
-    redirect_to users_url, notice: 'Se ha eliminado el usuario.'
   end
 
   private

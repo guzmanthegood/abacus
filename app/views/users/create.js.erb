@@ -1,4 +1,7 @@
-$("<%= escape_javascript(render @user) %>").appendTo("#users");
-$("#notice-content").html("<%= escape_javascript(render 'shared/notice') %>");
+var error = <%= @user.errors.count == 0 ? 0 : 1 %>;
+if (!error) {
+	$("<%= escape_javascript(render @user) %>").appendTo("#users");	
+	$("#user-form-title").html("Editar usuario #<%= @user.id %>");
+}
 $("#user-form-body").html("<%= escape_javascript(render 'form', user: @user) %>");
-auto_dismissible();
+$("#user_name").focus();

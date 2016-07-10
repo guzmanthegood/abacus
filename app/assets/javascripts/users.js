@@ -1,19 +1,10 @@
 $(document).on('turbolinks:load', function() {
 
+  // Select user click
   $("#users tr").click(function (e) {
-    $("html, body").animate({ scrollTop: 0 }, 600);
+    $("html, body").animate({ scrollTop: 0 }, 300);
     var id = $(this).find("td").first().html();
     $.get('/users/' + id + '/edit.js');
   });
   
-  /*
-  $('#example2').DataTable({
-    "paging": true,
-    "lengthChange": false,
-    "searching": false,
-    "ordering": true,
-    "info": true,
-    "autoWidth": false
-  });
-  */
 });

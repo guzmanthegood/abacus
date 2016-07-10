@@ -24,11 +24,16 @@
 
   <div class="col-xs-7">
 
-    <!-- box -->
+    <!-- box: users-index -->
     <div class="box box-warning">
       <div class="box-header">
         <h3 class="box-title">Usuarios registrados</h3>
+        <%= link_to new_user_path, class: 'btn btn-primary btn-sm btn-social pull-right', id: 'new-user-btn', remote: true do %>
+          <i class="fa fa-plus"></i>
+          <b>Nuevo usuario</b>
+        <% end %>
         <div class="box-tools">
+
           <div style="width: 200px;" class="input-group input-group-sm">
             <input type="text" placeholder="Buscar..." class="form-control pull-right" name="table_search">
             <div class="input-group-btn">
@@ -44,23 +49,17 @@
             <tr>
               <th style="width: 10px">#</th>
               <th>Nombre</th>
-              <th style="width: 200px">Email</th>
-              <th style="width: 200px"></th>
+              <th style="width: 320px">Email</th>
             </tr>
           </thead>
           <tbody id="users">
             <%= render @users %>
           </tbody>
-        </table><br>
-        <%= link_to new_user_path, class: 'btn btn-primary btn-sm pull-right btn-social' do %>
-          <i class="fa fa-plus"></i>
-          <b>Nuevo usuario</b>
-        <% end %>
-        </a>
+        </table>
       </div>
 
     </div>
-    <!-- /.box -->
+    <!-- /.box: users-index -->
 
 
 
