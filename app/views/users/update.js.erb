@@ -3,6 +3,6 @@ if (!error) {
 	$("#user_<%=@user.id %>").replaceWith("<%= escape_javascript(render @user) %>");
 
 	bind_user_click("<%=@user.id %>");
-  animate_color("#user_<%=@user.id %>", "#008D4C", "#FFF");
+  animate_color("#user_<%=@user.id %>", "#00A65A", "#FFF");
 };
 $("#user-form-body").html("<%= escape_javascript(render 'form', user: @user) %>");

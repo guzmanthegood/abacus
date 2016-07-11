@@ -20,9 +20,10 @@ feature 'Users' do
     
     visit users_path
 
-    expect(page).to have_selector('#users tr.user', count: 3)
+    expect(page).to have_content 'Usuarios registrados'
+    expect(page).to have_selector '#users tr.user', count: 3
     users.each do |user|
-      within("#user_#{user.id}") do
+      within "#user_#{user.id}" do
         expect(page).to have_content user.name
         expect(page).to have_content user.email
       end
@@ -32,12 +33,18 @@ feature 'Users' do
   scenario 'Index shows new user form' do
     visit users_path
 
-    expect(page).to have_content('Nuevo usuario')
-    within("#user-form-body") do
-      expect(page).to have_field('Nombre')
-      expect(page).to have_field('Email')
-      expect(page).to have_button('Crear Usuario')
+    expect(page).to have_content 'Nuevo usuario'
+    within '#user-form-body' do
+      expect(page).to have_field 'Nombre'
+      expect(page).to have_field 'Email'
+      expect(page).to have_button 'Crear Usuario'
     end
+  end
+
+  scenario 'Index shows new user link', :js do
+    visit users_path
+
+    expect(page).to have_link 'Nuevo usuario'
   end
 
   scenario 'Create without errors', :js do
@@ -50,7 +57,7 @@ feature 'Users' do
     click_button 'Crear Usuario'
 
     expect(page).to have_link 'Usuarios 1'
-    within("#users") do
+    within "#users" do
       expect(page).to have_content 'Fulanito'
       expect(page).to have_content 'fulanito@fulano.com'
     end
@@ -64,7 +71,7 @@ feature 'Users' do
 
     click_button 'Crear Usuario'
 
-    within("#user-form-body") do
+    within '#user-form-body' do
       expect(page).to have_content 'no puede estar en blanco'
     end
   end
@@ -76,22 +83,22 @@ feature 'Users' do
     visit users_path
     find("#user_#{user.id}").click
 
-    expect(page).to have_content("Editar usuario ##{user.id}")
-    within("#user-form-body") do
-      expect(page).to have_field('Nombre', with: user.name)
-      expect(page).to have_field('Email', with: user.email)
+    expect(page).to have_content "Editar usuario ##{user.id}"
+    within '#user-form-body' do
+      expect(page).to have_field 'Nombre', with: user.name
+      expect(page).to have_field 'Email', with: user.email
     end
 
     fill_in 'Nombre', with: 'Fulanito'
     fill_in 'Email', with: 'fulanito@fulano.com'
     click_button 'Actualizar Usuario'
 
-    within("#user-form-body") do
-      expect(page).to have_field('Nombre', with: 'Fulanito')
-      expect(page).to have_field('Email', with: 'fulanito@fulano.com')
+    within '#user-form-body' do
+      expect(page).to have_field 'Nombre', with: 'Fulanito'
+      expect(page).to have_field 'Email', with: 'fulanito@fulano.com'
     end
 
-    within("#users") do
+    within "#users" do
       expect(page).to have_content 'Fulanito'
       expect(page).to have_content 'fulanito@fulano.com'
     end
@@ -107,7 +114,7 @@ feature 'Users' do
     fill_in 'Email', with: ''
     click_button 'Actualizar Usuario'
 
-    within("#user-form-body") do
+    within '#user-form-body' do
       expect(page).to have_content 'no puede estar en blanco'
     end
   end
@@ -118,13 +125,13 @@ feature 'Users' do
     visit users_path
     find("#user_#{user.id}").click
 
-    within("#user-form-body") do
+    within '#user-form-body' do
       expect(page).to have_link 'Eliminar usuario'
     end
 
-    click_link('Nuevo usuario')
+    click_link 'Nuevo usuario'
 
-    within("#user-form-body") do
+    within '#user-form-body' do
       expect(page).to_not have_link 'Eliminar usuario'
     end
   end
@@ -137,10 +144,10 @@ feature 'Users' do
     expect(page).to have_link 'Usuarios 3'
     find("#user_#{user.id}").click
 
-    click_link('Eliminar usuario')
+    click_link 'Eliminar usuario'
 
     expect(page).to have_link 'Usuarios 2'
-    within("#users") do
+    within "#users" do
       expect(page).to_not have_content user.name
       expect(page).to_not have_content user.email
     end
