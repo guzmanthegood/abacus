@@ -1,16 +1,5 @@
 $(document).on('turbolinks:load', function() {
 	bind_users_click()
-
-  // Users search
-  $("#users_search_input").keyup(function(e) {
-  	var str = $(this).val();
-  	if (e.which <= 90 && e.which >= 48){console.log('hello')}
-  	if (str.length > 3) {
-  		$.get('/users.js', {search: str});
-		}
-
-	});  	
-  
 });
 
 function bind_users_click(){

@@ -1,5 +1,6 @@
 $(document).on('turbolinks:load', function() {
 	auto_dismissible();
+  $(document).ajaxStart(function() { Pace.restart(); });
 });
 
 function auto_dismissible(){
