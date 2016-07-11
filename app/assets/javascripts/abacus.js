@@ -21,5 +21,4 @@ function animate_color(selector, background, color, delete_after) {
     if (delete_after) e.remove();
     e.removeAttr('style'); // Mini fix -> care with this!
   });
-
 }
