@@ -1,25 +1,19 @@
-<h2>Change your password</h2>
+<% content_for :box_msg do %>
+  Modifica tu contraseña
+<% end %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+<%= bootstrap_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.hidden_field :reset_password_token %>
+  <%= f.password_field :password, hide_label: true, autofocus: true, placeholder: "Nueva contraseña", icon: "lock", autocomplete: "off" %>
+  <%= f.password_field :password_confirmation, hide_label: true, autofocus: true, placeholder: "Confirmar contraseña", icon: "lock", autocomplete: "off" %>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
+  <div class="row">
+    <div class="col-xs-12">
+      <%= f.submit 'Actualizar contraseña', class: 'btn btn-primary btn-block btn-flat' %>
+    </div>
   </div>
 <% end %>
 
-<%= render "users/shared/links" %>
+<% if devise_mapping.recoverable? %>
+  <br><%= link_to "Iniciar sesión", new_user_session_path %><br />
+<% end %>

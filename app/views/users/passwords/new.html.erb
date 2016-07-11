@@ -1,16 +1,17 @@
-<h2>Forgot your password?</h2>
+<% content_for :box_msg do %>
+	¿Olvidaste tu contraseña?
+<% end %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+<%= bootstrap_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= f.email_field :email, hide_label: true, autofocus: true, placeholder: "Email", icon: "envelope" %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+  <div class="row">
+    <div class="col-xs-12">
+      <%= f.submit 'Recuperar contraseña', class: 'btn btn-primary btn-block btn-flat' %>
+    </div>
   </div>
 <% end %>
 
-<%= render "users/shared/links" %>
+<% if devise_mapping.recoverable? %>
+  <br><%= link_to "Iniciar sesión", new_user_session_path %><br />
+<% end %>

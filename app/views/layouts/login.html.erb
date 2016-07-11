@@ -7,11 +7,28 @@
     <title>Abacus</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'login-layout', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'login-layout', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body class="hold-transition fixed login-page <%= controller.controller_name %>">
-    <%= render 'shared/notice' %>
-    <%= yield %>
+    <div class="login-box">
+      <div class="login-logo">
+        <%= link_to root_path, class: 'logo' do %>
+          <b>Abacus</b>App
+        <% end %>
+      </div>
+
+      <div class="login-box-body">
+        <div id="layout-notice">
+          <%= render 'shared/notice', auto_dismissible: false %>
+        </div>
+
+        <% if content_for?(:box_msg) %>
+          <p class="login-box-msg"><%= yield :box_msg %></p>
+        <% end %>
+        
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
