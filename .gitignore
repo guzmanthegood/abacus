@@ -25,3 +25,6 @@ config/database.yml
 
 # Ignore DS_store apple config
 */.DS_Store
+
+# Ignore spec log
+spec/examples.txt

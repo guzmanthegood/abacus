@@ -4,6 +4,11 @@ es:
       user:
         one: Usuario
         other: Usuarios
+    attributes:
+      user:
+        name: Nombre
+        email: Email
+
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"
