@@ -25,11 +25,16 @@
         </section>
 
         <section class="content">
+          <div id="layout-notice">
+            <%= render 'shared/notice' %>
+          </div>
           <%= yield %>
         </section>
       </div>
 
       <%= render 'shared/footer' %>
     </div>
+
+    
   </body>
 </html>

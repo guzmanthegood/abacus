@@ -33,7 +33,14 @@
       <li class="header">GESTIÓN Y PLANIFICACIÓN</li>
 
       <li class="active">
-        <%= link_to '#' do %>
+        <%= link_to users_path do %>
+          <i class="fa fa-users"></i>
+          <span>Usuarios</span>
+          <span class="pull-right-container">
+            <small id="sidebar-users-label" class="label bg-purple pull-right"><%= User.all.count %></small>
+          </span>
+        <% end %>
+        <%= link_to root_path do %>
           <i class="fa fa-book"></i>
           <span>Proyectos</span>
           <span class="pull-right-container">

@@ -1,0 +1,14 @@
+<% if notice.present? %>
+	<div class="alert alert-success alert-dismissible auto-dismissible">
+    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+    <h4><i class="icon fa fa-info"></i> Acción correcta</h4>
+  	<%= notice %>
+  </div>  
+<% end %>
+<% if alert.present? %>
+	<div class="alert alert-danger alert-dismissible auto-dismissible">
+    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+    <h4><i class="icon fa fa-ban"></i> ¡Acción incorrecta!</h4>
+  	<%= alert %>
+  </div>
+<% end %>

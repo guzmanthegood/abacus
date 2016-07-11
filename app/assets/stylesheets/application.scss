@@ -1,7 +1,11 @@
 /*
+	*= require jquery-ui/core
   *= require adminlte/bootstrap
+  *= require rails_bootstrap_forms
   *= require adminlte/AdminLTE
   *= require adminlte/skins/skin-blue
+  *= require adminlte/plugins/datatables/dataTables.bootstrap
+  *= require adminlte/plugins/pace/pace
   *= require font-awesome
   *= require ionicons
   *= require_tree

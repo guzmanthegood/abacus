@@ -1,0 +1,11 @@
+var error = <%= @user.errors.count == 0 ? 0 : 1 %>;
+if (!error) {
+	$("<%= escape_javascript(render @user) %>").appendTo("#users");
+	$("#user_<%=@user.id %>").animate({backgroundColor: "#008D4C", color: "#FFF"}, 500).delay(500)
+													 .animate({backgroundColor: "#FFF", color: "#333"}, 500 );
+	$("#user-form-title").html("Editar usuario #<%= @user.id %>");
+	$("#sidebar-users-label").html(parseInt($("#sidebar-users-label").text()) + 1);
+	bind_user_click("<%=@user.id %>");
+}
+$("#user-form-body").html("<%= escape_javascript(render 'form', user: @user) %>");
+$("#user_name").focus();

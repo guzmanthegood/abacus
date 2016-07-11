@@ -1,0 +1,10 @@
+var error = <%= @user.errors.count == 0 ? 0 : 1 %>;
+if (!error) {
+	$("#user_<%=@user.id %>").animate({backgroundColor: "#D33724", color: "#FFF"}, 500)
+	  											 .animate({backgroundColor: "#FFF", color: "#333"}, 500, function() { $("#user_<%=@user.id %>").remove() });
+
+	$("#user-form-title").html("Nuevo usuario");
+	$("#user-form-body").html("<%= escape_javascript(render 'form', user: User.new) %>");
+	$("#sidebar-users-label").html(parseInt($("#sidebar-users-label").text()) - 1);
+	$("#user_name").focus();
+};

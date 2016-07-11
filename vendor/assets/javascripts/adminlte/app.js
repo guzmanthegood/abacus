@@ -314,7 +314,9 @@ function _init() {
       var screenSizes = $.AdminLTE.options.screenSizes;
 
       //Enable sidebar toggle
-      $(document).on('click', toggleBtn, function (e) {
+      //Rock&Hack: turbolinks problems
+      //$(document).on('click', toggleBtn, function (e) {
+      $(toggleBtn).click(function (e) {
         e.preventDefault();
 
         //Enable sidebar push menu
@@ -637,7 +639,6 @@ function _init() {
       //if a source is specified
       if (settings.source === "") {
         if (window.console) {
-          window.console.log("Please specify a source first - boxRefresh()");
         }
         return;
       }

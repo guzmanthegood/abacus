@@ -1,0 +1,7 @@
+<%= render 'shared/notice' %>
+<%= bootstrap_form_for user, remote: true do |f| %>
+  <%= f.text_field :name, autofocus: true %>
+  <%= f.text_field :email %>
+  <%= f.submit %>
+  <%= link_to('Eliminar usuario', user_path(user), method: :delete, data: { confirm: '¿Seguro?' }, class: "btn text-danger pull-right", remote: true) if user.id != nil %>
+<% end %>

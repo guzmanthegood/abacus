@@ -12,8 +12,11 @@ gem 'turbolinks', '~> 5'
 
 # Assets
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'font-awesome-rails'
 gem 'ionicons-rails'
+gem 'bootstrap_form'
+
 
 group :development, :test do
   gem 'sqlite3'
