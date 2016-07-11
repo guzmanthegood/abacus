@@ -1,0 +1,36 @@
+<div class="login-box">
+  <div class="login-logo">
+    <%= link_to root_path, class: 'logo' do %>
+      <b>Abacus</b>App
+    <% end %>
+  </div>
+
+  <div class="login-box-body">
+    <p class="login-box-msg"></p>
+
+    <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= f.email_field :email, hide_label: true, autofocus: true, placeholder: "Email", icon: "envelope" %>
+      <%= f.password_field :password, hide_label: true, autofocus: true, placeholder: "Contraseña", icon: "lock" %>
+
+
+      <div class="row">
+        <div class="col-xs-7">
+          <div class="checkbox icheck">
+            <label>
+              <%= f.check_box :remember_me %>
+            </label>
+          </div>
+        </div>
+        <div class="col-xs-5">
+          <%= f.submit 'Iniciar sesión', class: 'btn btn-primary btn-block btn-flat' %>
+        </div>
+      </div>
+    
+    <% end %>
+
+    <% if devise_mapping.recoverable? %>
+      <%= link_to "¿Olvidaste tu contraseña?", new_password_path(resource_name) %><br />
+    <% end %>
+
+  </div>
+</div>
