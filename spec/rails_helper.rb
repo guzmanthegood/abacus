@@ -2,15 +2,23 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 
-require 'spec_helper'
 require 'rspec/rails'
+require 'spec_helper'
+
+require 'capybara/rails'
+require 'capybara/rspec'
+require 'capybara-screenshot/rspec'
+require 'capybara/poltergeist'
 
 I18n.default_locale = :es
+
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
-  config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
-  config.filter_rails_from_backtrace!
 end
+
+Capybara.exact = true
+Capybara.javascript_driver = :poltergeist
+Capybara::Screenshot.autosave_on_failure = true
+Capybara::Screenshot.webkit_options = { width: 1920, height: 1080 }
