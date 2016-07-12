@@ -1,6 +1,6 @@
 module RequestHelpers
   def create_logged_in_user
-    user = Factory(:user)
+    user = create(:user)
     login(user)
     user
   end
