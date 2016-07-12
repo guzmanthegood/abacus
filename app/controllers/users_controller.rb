@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
-  
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:edit, :update, :destroy]
   respond_to? :js, :html
 
   def index
@@ -10,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = current_user
   end
 
   def new
