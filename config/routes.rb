@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   	passwords: 'users/passwords'
  	}
 
-  resources :users, except: :show
+  resources :users
   get 'profile', to: 'users#show'
 
   root 'static#home'

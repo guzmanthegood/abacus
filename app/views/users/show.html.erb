@@ -9,17 +9,17 @@
 <% end %>
 
 <div class="row">
+
+  <!-- Left column -->
   <div class="col-md-4">
-    <!-- Profile Image -->
+    
+    <!-- box-profile -->
     <div class="box box-primary">
       <div class="box-body box-profile">
         <%= image_tag 'default-avatar', class: 'profile-user-img img-responsive img-circle', alt: 'User profile picture' %>
 
         <h3 class="profile-username text-center"><%= current_user.name %></h3>
-        
-        <!--
-        <p class="text-muted text-center">Software Engineer</p>
-        -->
+        <!-- <p class="text-muted text-center">Software Engineer</p> -->
         
         <ul class="list-group list-group-unbordered">
           <li class="list-group-item">
@@ -36,7 +36,7 @@
       </div>
       <!-- /.box-body -->
     </div>
-    <!-- /.box -->
+    <!-- /.box-profile -->
 
     <!-- box-projects -->
     <div class="box box-primary">
@@ -76,4 +76,52 @@
     <!-- /.box-projects -->
 
   </div>
+  <!-- /.Left column -->
+
+  <!-- Right column -->
+  <div class="col-md-8">
+
+    <!-- box-edit-form -->
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">Editar datos personales</h3>
+
+        <div class="box-tools pull-right">
+          <button data-widget="collapse" class="btn btn-box-tool" type="button"><i class="fa fa-minus"></i></button>
+          <!--<button data-widget="remove" class="btn btn-box-tool" type="button"><i class="fa fa-times"></i></button>-->
+        </div>
+      </div>
+
+
+      <%= bootstrap_form_for @user do |f| %>
+
+        <div class="box-body">
+          <%= f.text_field :name, placeholder: "Nombre" %>
+          <%= f.text_field :email, placeholder: "Email", icon: "envelope" %>
+          <hr>
+          <div class="row">
+            <div class="col-md-6 col-xs-12">
+              <%= f.password_field :password, placeholder: "Contraseña", icon: "lock", autocomplete: "off", value: "" %>
+            </div>
+            <div class="col-md-6 col-xs-12">
+              <%= f.password_field :password_confirmation, placeholder: "Confirmar contraseña", icon: "lock", autocomplete: "off", value: ""  %>
+            </div>
+          </div>
+          <p class="text-muted form-msg">
+            * Si no desea modificar la contraseña deje estos campos en blanco
+          </p>
+        </div>
+
+        <div class="box-footer">
+          <%= f.submit class: "btn btn-primary pull-right" %>
+        </div>
+
+      <% end %>
+
+    </div>
+    <!-- ./box-edit-form -->
+
+
+  </div>
+  <!-- /.Right column -->
 </div>
