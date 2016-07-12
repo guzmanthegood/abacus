@@ -1,0 +1,17 @@
+<% content_for :box_msg do %>
+  Modifica tu contraseña
+<% end %>
+
+<%= bootstrap_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+  <%= f.hidden_field :reset_password_token %>
+  <%= f.password_field :password, hide_label: true, autofocus: true, placeholder: "Nueva contraseña", icon: "lock", autocomplete: "off" %>
+  <%= f.password_field :password_confirmation, hide_label: true, autofocus: true, placeholder: "Confirmar contraseña", icon: "lock", autocomplete: "off" %>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <%= f.submit 'Actualizar contraseña', class: 'btn btn-primary btn-block btn-flat' %>
+    </div>
+  </div>
+<% end %>
+
+<br><%= link_to "Iniciar sesión", new_user_session_path %><br />

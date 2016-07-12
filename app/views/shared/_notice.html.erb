@@ -1,14 +1,15 @@
+<% auto_dismissible = true if local_assigns[:auto_dismissible].nil? %>
 <% if notice.present? %>
-	<div class="alert alert-success alert-dismissible auto-dismissible">
+	<div class="alert alert-success alert-dismissible <%= 'auto-dismissible' if auto_dismissible == true %>">
     <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
     <h4><i class="icon fa fa-info"></i> Acción correcta</h4>
   	<%= notice %>
   </div>  
 <% end %>
 <% if alert.present? %>
-	<div class="alert alert-danger alert-dismissible auto-dismissible">
+	<div class="alert alert-danger alert-dismissible <%= 'auto-dismissible' if auto_dismissible == true %>">
     <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-    <h4><i class="icon fa fa-ban"></i> ¡Acción incorrecta!</h4>
+    <h4><i class="icon fa fa-ban"></i> ¡Hubo un error!</h4>
   	<%= alert %>
   </div>
 <% end %>

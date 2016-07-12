@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Abacus</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body class="hold-transition fixed login-page <%= controller.controller_name %>">
+    <div class="login-box">
+      <div class="login-logo">
+        <%= link_to root_path, class: 'logo' do %>
+          <b>Abacus</b>App
+        <% end %>
+      </div>
+
+      <div class="login-box-body">
+        <div id="layout-notice">
+          <%= render 'shared/notice' %>
+        </div>
+
+        <% if content_for?(:box_msg) %>
+          <p class="login-box-msg"><%= yield :box_msg %></p>
+        <% end %>
+        
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

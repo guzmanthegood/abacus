@@ -8,6 +8,8 @@ es:
       user:
         name: Nombre
         email: Email
+        password: Contraseña
+        password_confirmation: Confirmar contraseña
 
     errors:
       messages:
@@ -216,7 +218,8 @@ es:
   time:
     am: am
     formats:
-      default: "%A, %d de %B de %Y %H:%M:%S %z"
-      long: "%d de %B de %Y %H:%M"
+      default: "%d/%m/%Y - %H:%M:%S"
+      long: "%d de %B de %Y a %H:%M"
       short: "%d de %b %H:%M"
+      only_date: "%d/%m/%Y"
     pm: pm

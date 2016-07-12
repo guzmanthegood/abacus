@@ -1,0 +1,127 @@
+<% content_for :header do %>
+  Mi cuenta
+<% end %>
+
+<% content_for :breadcrumb do %>
+  <li><%= link_to '<i class="fa fa-home"></i> Home'.html_safe, root_path %></li>
+  <li><%= link_to 'Gestión de usuarios', users_path %></li>
+  <li class="active">Mi cuenta</li>
+<% end %>
+
+<div class="row">
+
+  <!-- Left column -->
+  <div class="col-md-4">
+    
+    <!-- box-profile -->
+    <div class="box box-primary">
+      <div class="box-body box-profile">
+        <%= image_tag 'default-avatar', class: 'profile-user-img img-responsive img-circle', alt: 'User profile picture' %>
+
+        <h3 class="profile-username text-center"><%= current_user.name %></h3>
+        <!-- <p class="text-muted text-center">Software Engineer</p> -->
+        
+        <ul class="list-group list-group-unbordered">
+          <li class="list-group-item">
+            <b>Conexiones totales:</b> <a class="pull-right"><%= current_user.sign_in_count %></a>
+          </li>
+          <li class="list-group-item">
+            <b>Última conexión:</b> <a class="pull-right"><%= I18n.l current_user.last_sign_in_at, format: :long %></a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="box-footer">
+        <%= link_to '<i class="fa fa-trash"></i> Borrar mi cuenta'.html_safe, user_path(current_user), method: :delete, data: { confirm: '¿Seguro?' }, class: "btn text-danger pull-right" %>
+      </div>
+      <!-- /.box-body -->
+    </div>
+    <!-- /.box-profile -->
+
+    <!-- box-projects -->
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">Proyectos recientes</h3>
+
+        <div class="box-tools pull-right">
+          <button data-widget="collapse" class="btn btn-box-tool" type="button"><i class="fa fa-minus"></i></button>
+          <!--<button data-widget="remove" class="btn btn-box-tool" type="button"><i class="fa fa-times"></i></button>-->
+        </div>
+      </div>
+
+      <div class="box-body">
+        <div class="table-responsive">
+          <table class="table no-margin table-hover">
+            <thead>
+              <tr>
+                <th style="width: 10px">#</th>
+                <th>Proyecto</th>
+                <th style="width: 150px">Últ. Modificación</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= link_to '1', 'javascript:void(0)' %></td>
+                <td><%= link_to 'Catamarán Oasis', 'javascript:void(0)' %></td>
+                <td><%= I18n.l current_user.last_sign_in_at %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="box-footer text-center">
+        <%= link_to 'Ver todos los proyectos', 'javascript:void(0)', class: 'uppercase' %>
+      </div>
+    </div>
+    <!-- /.box-projects -->
+
+  </div>
+  <!-- /.Left column -->
+
+  <!-- Right column -->
+  <div class="col-md-8">
+
+    <!-- box-edit-form -->
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">Editar datos personales</h3>
+
+        <div class="box-tools pull-right">
+          <button data-widget="collapse" class="btn btn-box-tool" type="button"><i class="fa fa-minus"></i></button>
+          <!--<button data-widget="remove" class="btn btn-box-tool" type="button"><i class="fa fa-times"></i></button>-->
+        </div>
+      </div>
+
+
+      <%= bootstrap_form_for @user do |f| %>
+
+        <div class="box-body">
+          <%= f.text_field :name, placeholder: "Nombre" %>
+          <%= f.text_field :email, placeholder: "Email", icon: "envelope" %>
+          <hr>
+          <div class="row">
+            <div class="col-md-6 col-xs-12">
+              <%= f.password_field :password, placeholder: "Contraseña", icon: "lock", autocomplete: "off", value: "" %>
+            </div>
+            <div class="col-md-6 col-xs-12">
+              <%= f.password_field :password_confirmation, placeholder: "Confirmar contraseña", icon: "lock", autocomplete: "off", value: ""  %>
+            </div>
+          </div>
+          <p class="text-muted form-msg">
+            * Si no desea modificar la contraseña deje estos campos en blanco
+          </p>
+        </div>
+
+        <div class="box-footer">
+          <%= f.submit class: "btn btn-primary pull-right" %>
+        </div>
+
+      <% end %>
+
+    </div>
+    <!-- ./box-edit-form -->
+
+
+  </div>
+  <!-- /.Right column -->
+</div>

@@ -1,0 +1,15 @@
+<% content_for :box_msg do %>
+	¿Olvidaste tu contraseña?
+<% end %>
+
+<%= bootstrap_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= f.email_field :email, hide_label: true, autofocus: true, placeholder: "Email", icon: "envelope" %>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <%= f.submit 'Recuperar contraseña', class: 'btn btn-primary btn-block btn-flat' %>
+    </div>
+  </div>
+<% end %>
+
+<br><%= link_to "Iniciar sesión", new_user_session_path %><br />

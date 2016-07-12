@@ -5,6 +5,7 @@ gem 'rails', '~> 5.0.0'
 gem 'puma', '~> 3.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jbuilder', '~> 2.5'
+gem 'devise'
 
 gem 'sass-rails', '~> 5.0'
 gem 'coffee-rails', '~> 4.2'
@@ -22,7 +23,6 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'fuubar'
   gem 'launchy'
-
   gem 'rspec-rails', '~> 3.4'
   gem 'capybara'
   gem 'capybara-screenshot'
@@ -41,7 +41,6 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'poltergeist'
-  
 end
 
 group :production do

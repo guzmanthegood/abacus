@@ -9,6 +9,7 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
   config.include(CommonActions)
+  config.include(RequestHelpers)
 
   config.before(:each, type: :feature) do
     # :rack_test driver's Rack app under test shares database connection
