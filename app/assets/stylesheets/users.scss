@@ -7,4 +7,10 @@ body.users{
 	#users tr{
 		cursor: pointer;
 	}	
+
+  p.form-msg{
+    font-style: italic;
+    margin-bottom: 20px;
+    margin-left: 5px;
+  }
 }

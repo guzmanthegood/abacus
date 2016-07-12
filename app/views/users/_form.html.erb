@@ -1,7 +1,18 @@
-<%= render 'shared/notice' %>
 <%= bootstrap_form_for user, remote: true do |f| %>
-  <%= f.text_field :name, autofocus: true %>
-  <%= f.text_field :email %>
+  <%= f.text_field :name, placeholder: "Nombre", autofocus: true %>
+  <%= f.text_field :email, placeholder: "Email", icon: "envelope" %>
+  <hr>
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+      <%= f.password_field :password, placeholder: "Contraseña", icon: "lock", autocomplete: "off", value: "" %>
+    </div>
+    <div class="col-md-6 col-xs-12">
+      <%= f.password_field :password_confirmation, placeholder: "Confirmar contraseña", icon: "lock", autocomplete: "off", value: ""  %>
+    </div>
+  </div>
+  <p class="text-muted form-msg">
+    * Si no desea modificar la contraseña deje estos campos en blanco
+  </p>
   <%= f.submit class: 'btn btn-primary' %>
-  <%= link_to('Eliminar usuario', user_path(user), method: :delete, data: { confirm: '¿Seguro?' }, class: "btn text-danger pull-right", remote: true) if user.id != nil %>
+  <%= link_to('<i class="fa fa-trash"></i> Eliminar usuario'.html_safe, user_path(user), method: :delete, data: { confirm: '¿Seguro?' }, class: "btn text-danger pull-right", remote: true) if user.id != nil %>
 <% end %>

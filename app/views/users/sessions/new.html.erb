@@ -3,8 +3,8 @@
 <% end %>
 
 <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <%= f.email_field :email, hide_label: true, autofocus: true, placeholder: "Email", icon: "envelope" %>
-  <%= f.password_field :password, hide_label: true, autofocus: true, placeholder: "Contraseña", icon: "lock", autocomplete: "off" %>
+  <%= f.email_field :email, hide_label: true, autofocus: true, placeholder: "Email", icon: "envelope", autocomplete: "off" %>
+  <%= f.password_field :password, hide_label: true, placeholder: "Contraseña", icon: "lock", autocomplete: "off" %>
 
   <div class="row">
     <div class="col-xs-7">
