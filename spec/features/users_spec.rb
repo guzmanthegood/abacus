@@ -1,18 +1,20 @@
 require 'rails_helper'
 
 feature 'Users' do
+  let(:user)  {create(:user)}
 
   before do
     page.driver.resize_window(1920, 1080) if js_active?
+    login user
   end
 
   scenario 'Shows link to users in main page with users count' do
     visit root_path
-    expect(page).to have_link 'Usuarios 0'
+    expect(page).to have_link 'Usuarios 1'
 
     users = [create(:user), create(:user), create(:user)]
     visit root_path
-    expect(page).to have_link 'Usuarios 3'
+    expect(page).to have_link 'Usuarios 4'
   end
 
   scenario 'Index shows all users' do
@@ -21,7 +23,7 @@ feature 'Users' do
     visit users_path
 
     expect(page).to have_content 'Usuarios registrados'
-    expect(page).to have_selector '#users tr.user', count: 3
+    expect(page).to have_selector '#users tr.user', count: 4
     users.each do |user|
       within "#user_#{user.id}" do
         expect(page).to have_content user.name
@@ -50,13 +52,15 @@ feature 'Users' do
   scenario 'Create without errors', :js do
     visit users_path
     
+    expect(page).to have_link 'Usuarios 1'
+
     fill_in 'Nombre', with: 'Fulanito'
     fill_in 'Email', with: 'fulanito@fulano.com'
-    expect(page).to have_link 'Usuarios 0'
-
+    fill_in 'Contraseña', with: '123456'
+    fill_in 'Confirmar contraseña', with: '123456'
     click_button 'Crear Usuario'
 
-    expect(page).to have_link 'Usuarios 1'
+    expect(page).to have_link 'Usuarios 2'
     within "#users" do
       expect(page).to have_content 'Fulanito'
       expect(page).to have_content 'fulanito@fulano.com'
@@ -141,12 +145,12 @@ feature 'Users' do
     user = users.first
 
     visit users_path
-    expect(page).to have_link 'Usuarios 3'
+    expect(page).to have_link 'Usuarios 4'
     find("#user_#{user.id}").click
 
     click_link 'Eliminar usuario'
 
-    expect(page).to have_link 'Usuarios 2'
+    expect(page).to have_link 'Usuarios 3'
     within "#users" do
       expect(page).to_not have_content user.name
       expect(page).to_not have_content user.email
