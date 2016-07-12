@@ -23,7 +23,6 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'fuubar'
   gem 'launchy'
-
   gem 'rspec-rails', '~> 3.4'
   gem 'capybara'
   gem 'capybara-screenshot'
@@ -42,7 +41,6 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'poltergeist'
-  
 end
 
 group :production do
