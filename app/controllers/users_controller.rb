@@ -25,19 +25,15 @@ class UsersController < ApplicationController
   end
 
   def update
-    ok = @user.update(user_params)
     respond_to do |format|
-      format.html {
-        if ok
-          redirect_to profile_path, notice: 'Datos de usuario modificados correctamente'
-        else
-          render :show
-        end    
-      }
-      format.js { }
+      if @user.update(user_params)
+        format.html { redirect_to profile_path, notice: 'Datos de usuario modificados correctamente' }
+        format.js   { }
+      else
+        format.html { render :show }
+        format.js   { }
+      end    
     end
-
-    
   end
 
   def destroy
