@@ -4,8 +4,7 @@ body.projects{
     margin-top: -5px;
   }
 
-  #projects{
-    td.text-muted{ font-style: italic }
-    tr { cursor: pointer }
-  }
+  #projects tr{
+		cursor: pointer;
+	}	
 }

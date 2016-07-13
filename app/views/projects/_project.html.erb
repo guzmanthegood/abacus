@@ -1,7 +1,7 @@
 <tr id="project_<%= project.id %>" class="project">
   <td><%= project.id %></td>
-  <td><%= image_tag 'default-50x50.gif' %></td>
+  <td><%= image_tag 'default-25x25' %></td>
   <td><%= project.name %></td>
-  <td><%= project.web %></td>
-  <td class="text-muted"><%= project.description %></td>
+  <td><%= current_user.name %></td>
+  <td><%= I18n.l project.created_at, format: :only_date %></td>
 </tr>
