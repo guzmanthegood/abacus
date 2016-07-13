@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   	passwords: 'users/passwords'
  	}
 
+  resources :projects
   resources :users
   get 'profile', to: 'users#show'
 

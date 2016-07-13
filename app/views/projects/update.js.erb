@@ -1,0 +1,8 @@
+var error = <%= @project.errors.count == 0 ? 0 : 1 %>;
+if (!error) {
+	$("#project_<%=@project.id %>").replaceWith("<%= escape_javascript(render @project) %>");
+
+	bind_project_click("<%=@project.id %>");
+  animate_color("#project_<%=@project.id %>", "#00A65A", "#FFF");
+};
+$("#project-form-body").html("<%= escape_javascript(render 'form', project: @project) %>");

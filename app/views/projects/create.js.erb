@@ -1,0 +1,10 @@
+var error = <%= @project.errors.count == 0 ? 0 : 1 %>;
+if (!error) {
+	$("<%= escape_javascript(render @project) %>").appendTo("#projects");
+	$("#project-form-title").html("Editar proyecto #<%= @project.id %>");
+	$("#sidebar-projects-label").html(parseInt($("#sidebar-projects-label").text()) + 1);
+  
+	bind_project_click("<%=@project.id %>");
+  animate_color("#project_<%=@project.id %>", "#00A65A", "#FFF");
+}
+$("#project-form-body").html("<%= escape_javascript(render 'form', project: @project) %>");

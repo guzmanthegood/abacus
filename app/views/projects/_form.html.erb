@@ -1,0 +1,8 @@
+<%= bootstrap_form_for project, remote: true do |f| %>
+  <%= f.text_field :name, placeholder: "Nombre", autofocus: true %>
+  <%= f.text_field :web, placeholder: "Web", icon: "link" %>
+  <%= f.text_area :description, placeholder: "Descripción" %>
+  
+  <%= f.submit class: 'btn btn-primary' %>
+  <%= link_to('<i class="fa fa-trash-o"></i> Eliminar proyecto'.html_safe, project_path(project), method: :delete, data: { confirm: '¿Seguro?' }, class: "btn text-danger pull-right", remote: true) if project.id != nil %>
+<% end %>

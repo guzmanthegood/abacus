@@ -22,7 +22,7 @@ feature 'Users' do
     
     visit users_path
 
-    expect(page).to have_content 'Usuarios registrados'
+    expect(page).to have_content 'Gestión de usuarios'
     expect(page).to have_selector '#users tr.user', count: 4
     users.each do |user|
       within "#user_#{user.id}" do
@@ -108,7 +108,7 @@ feature 'Users' do
     end
   end
 
-  scenario 'Update without errors', :js do
+  scenario 'Update with errors', :js do
     user = create(:user)
 
     visit users_path

@@ -4,12 +4,19 @@ es:
       user:
         one: Usuario
         other: Usuarios
+      project:
+        one: Proyecto
+        other: Proyectos
     attributes:
       user:
         name: Nombre
         email: Email
         password: Contraseña
         password_confirmation: Confirmar contraseña
+      project:
+        name: Nombre
+        web: "Página web"
+        description: "Descripción"
 
     errors:
       messages:
