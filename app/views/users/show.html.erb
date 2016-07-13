@@ -1,10 +1,9 @@
 <% content_for :header do %>
-  Mi cuenta
+  <i class="fa fa-user"></i> Mi cuenta
 <% end %>
 
 <% content_for :breadcrumb do %>
-  <li><%= link_to '<i class="fa fa-home"></i> Home'.html_safe, root_path %></li>
-  <li><%= link_to 'Gestión de usuarios', users_path %></li>
+  <li><%= link_to '<i class="fa fa-home"></i> Inicio'.html_safe, root_path %></li>
   <li class="active">Mi cuenta</li>
 <% end %>
 

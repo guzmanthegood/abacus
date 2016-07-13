@@ -1,0 +1,11 @@
+body.projects{
+  #new-project-btn{
+    margin-right: 210px;
+    margin-top: -5px;
+  }
+
+  #projects{
+    td.text-muted{ font-style: italic }
+    tr { cursor: pointer }
+  }
+}

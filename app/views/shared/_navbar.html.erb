@@ -18,7 +18,7 @@
       <ul class="nav navbar-nav">
         <li>
           <%= bootstrap_form_tag url: root_path do |f|  %>
-            <%= f.select :project, project_example_array, 
+            <%= f.select :project, options_for_projects, 
                         { hide_label: true, include_blank: true }, 
                         { class: 'form-control select2', placeholder: 'Ir al proyecto', wrapper_class: 'project-select' } %>
           <% end %>
