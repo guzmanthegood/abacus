@@ -27,6 +27,7 @@ group :development, :test do
   gem 'capybara'
   gem 'capybara-screenshot'
   gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 group :development do

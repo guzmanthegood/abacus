@@ -57,11 +57,11 @@
       </li>
 
       <li class="projects">
-        <%= link_to '#' do %>
+        <%= link_to projects_path do %>
           <i class="fa fa-book"></i>
           <span>Proyectos</span>
           <span class="pull-right-container">
-            <small class="label label-primary pull-right">0</small>
+            <small class="label label-primary pull-right"><%= Project.all.count %></small>
           </span>
         <% end %>
       </li>
