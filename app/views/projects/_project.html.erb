@@ -1,6 +1,6 @@
 <tr id="project_<%= project.id %>" class="project">
   <td><%= project.id %></td>
-  <td><%= image_tag 'default-25x25' %></td>
+  <td><%= image_tag 'default-25x25.gif' %></td>
   <td><%= project.name %></td>
   <td><%= current_user.name %></td>
   <td><%= (I18n.l project.created_at) if project.id.present? %></td>
