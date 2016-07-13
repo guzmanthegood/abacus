@@ -32,7 +32,7 @@
     <ul class="sidebar-menu">
       <li class="header">GESTIÓN Y PLANIFICACIÓN</li>
 
-      <li class="active">
+      <li class="users">
         <%= link_to users_path do %>
           <i class="fa fa-users"></i>
           <span>Usuarios</span>
@@ -40,6 +40,9 @@
             <small id="sidebar-users-label" class="label bg-purple pull-right"><%= User.all.count %></small>
           </span>
         <% end %>
+      </li>
+
+      <li class="projects">
         <%= link_to root_path do %>
           <i class="fa fa-book"></i>
           <span>Proyectos</span>

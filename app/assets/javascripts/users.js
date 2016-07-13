@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', function() {
-	bind_users_click()
+	bind_users_click();
 });
 
 function bind_users_click(){

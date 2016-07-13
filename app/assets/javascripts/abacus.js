@@ -22,3 +22,8 @@ function animate_color(selector, background, color, delete_after) {
     e.removeAttr('style'); // Mini fix -> care with this!
   });
 }
+
+function sidebar_active(e) {
+  $("ul.sidebar-menu li").removeClass("active");
+  $("ul.sidebar-menu li." + e).addClass("active");
+}

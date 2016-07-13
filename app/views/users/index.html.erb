@@ -61,8 +61,11 @@
 
     </div>
     <!-- /.box: users-index -->
-
-
-
   </div>
 </div>
+
+<% content_for :js_hacks do %>
+  <script type="text/javascript">
+    sidebar_active("users");
+  </script>
+<% end %>
