@@ -3,7 +3,7 @@ $(document).on('turbolinks:load', function() {
 });
 
 function bind_users_click(){
-  $("#users tr").each(function( index ) {
+  $("#users tr").each(function(i) {
   	var id = $(this).find("td").first().html();
   	bind_user_click(id);
   });

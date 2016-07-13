@@ -1,4 +1,5 @@
 $(document).on('turbolinks:load', function() {
+  bind_select2();
 	auto_dismissible();
   $(document).ajaxStart(function() { Pace.restart(); });
 });
@@ -26,4 +27,12 @@ function animate_color(selector, background, color, delete_after) {
 function sidebar_active(e) {
   $("ul.sidebar-menu li").removeClass("active");
   $("ul.sidebar-menu li." + e).addClass("active");
+}
+
+function bind_select2() {
+  $(".select2").each(function(i) {
+    $(this).select2({
+      placeholder: $(this).attr("placeholder")
+    });
+  });
 }
