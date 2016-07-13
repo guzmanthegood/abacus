@@ -108,7 +108,7 @@ feature 'Users' do
     end
   end
 
-  scenario 'Update without errors', :js do
+  scenario 'Update with errors', :js do
     user = create(:user)
 
     visit users_path
