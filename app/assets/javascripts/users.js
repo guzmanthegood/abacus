@@ -11,8 +11,12 @@ function bind_users_click(){
 
 function bind_user_click(id) {
 	$("#user_" + id).click(function (e) {
-		var aTag = $("#user-form-title");
-    $('html,body').animate({scrollTop: (aTag.offset().top - 75)}, 600);
   	$.get('/users/' + id + '/edit.js');
+    scroll_users_form();
   });
+}
+
+function scroll_users_form() {
+  var aTag = $("#user-form-title");
+  $('html,body').animate({scrollTop: (aTag.offset().top - 75)}, 600);
 }
