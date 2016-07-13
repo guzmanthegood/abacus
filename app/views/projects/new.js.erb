@@ -1,0 +1,4 @@
+$("#project-form-title").html("Nuevo proyecto");
+$("#project-form-body").html("<%= escape_javascript(render 'form', project: @project) %>");
+$("#project_name").focus();
+scroll_projects_form();

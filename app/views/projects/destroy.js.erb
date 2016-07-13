@@ -1,0 +1,9 @@
+var error = <%= @project.errors.count == 0 ? 0 : 1 %>;
+if (!error) {
+  animate_color("#project_<%=@project.id %>", "#D33724", "#FFF", true);                           
+
+	$("#project-form-title").html("Nuevo proyecto");
+	$("#project-form-body").html("<%= escape_javascript(render 'form', project: Project.new) %>");
+	$("#sidebar-projects-label").html(parseInt($("#sidebar-projects-label").text()) - 1);
+	$("#project_name").focus();
+};

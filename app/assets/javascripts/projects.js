@@ -11,9 +11,12 @@ function bind_projects_click(){
 
 function bind_project_click(id) {
 	$("#project_" + id).click(function (e) {
-		var aTag = $("#project-form-title");
-    $('html,body').animate({scrollTop: (aTag.offset().top - 75)}, 600);
-  	//$.get('/project/' + id + '/show.js');
-  	console.log('/project/' + id + '/show.js');
+  	$.get('/projects/' + id + '/edit.js');
+    scroll_projects_form();
   });
+}
+
+function scroll_projects_form() {
+  var aTag = $("#project-form-title");
+  $('html,body').animate({scrollTop: (aTag.offset().top - 75)}, 600);
 }
