@@ -3,5 +3,5 @@
   <td><%= image_tag 'default-25x25' %></td>
   <td><%= project.name %></td>
   <td><%= current_user.name %></td>
-  <td><%= (I18n.l project.created_at, format: :only_date) if project.id.present? %></td>
+  <td><%= (I18n.l project.created_at) if project.id.present? %></td>
 </tr>
