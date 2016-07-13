@@ -30,7 +30,22 @@
 
     <!-- Sidebar Menu -->
     <ul class="sidebar-menu">
-      <li class="header">GESTIÓN Y PLANIFICACIÓN</li>
+      <li class="header">MANTENIMIENTO</li>
+
+      <li class="home active">
+        <%= link_to root_path do %>
+          <i class="fa fa-home"></i>
+          <span>Inicio</span>
+        <% end %>
+      </li>
+
+      <li class="profile">
+        <%= link_to profile_path do %>
+          <i class="fa fa-user"></i>
+          <span>Mi cuenta</span>
+        <% end %>
+      </li>
+
 
       <li class="users">
         <%= link_to users_path do %>
@@ -43,7 +58,7 @@
       </li>
 
       <li class="projects">
-        <%= link_to root_path do %>
+        <%= link_to '#' do %>
           <i class="fa fa-book"></i>
           <span>Proyectos</span>
           <span class="pull-right-container">
@@ -51,7 +66,46 @@
           </span>
         <% end %>
       </li>
-     
+
+
+      <li class="header">GESTIÓN DEL PROYECTO</li>
+
+      <li class="config">
+        <%= link_to '#' do %>
+          <i class="fa fa-gears"></i>
+          <span>Configuración</span>
+        <% end %>
+      </li>
+
+      <li class="doc">
+        <%= link_to '#' do %>
+          <i class="fa fa-file"></i>
+          <span>Documentación</span>
+        <% end %>
+      </li>
+
+      <li class="tasks">
+        <%= link_to '#' do %>
+          <i class="fa fa-cubes"></i>
+          <span>Tareas</span>
+          <span class="pull-right-container">
+            <small class="label label-primary pull-right">0</small>
+          </span>
+        <% end %>
+      </li>
+
+      <li class="invoices">
+        <%= link_to '#' do %>
+          <i class="fa fa-money"></i>
+          <span>Facturas</span>
+          <span class="pull-right-container">
+            <small class="label label-primary pull-right">0</small>
+          </span>
+        <% end %>
+      </li>
+
+      
+
     </ul>
 
     <!-- /.sidebar-menu -->

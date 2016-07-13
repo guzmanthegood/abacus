@@ -32,7 +32,7 @@
       </div>
 
       <div class="box-footer">
-        <%= link_to '<i class="fa fa-trash"></i> Borrar mi cuenta'.html_safe, user_path(current_user), method: :delete, data: { confirm: '¿Seguro?' }, class: "btn text-danger pull-right" %>
+        <%= link_to '<i class="fa fa-trash-o"></i> Borrar mi cuenta'.html_safe, user_path(current_user), method: :delete, data: { confirm: '¿Seguro?' }, class: "btn text-danger pull-right" %>
       </div>
       <!-- /.box-body -->
     </div>
@@ -125,3 +125,9 @@
   </div>
   <!-- /.Right column -->
 </div>
+
+<% content_for :js_hacks do %>
+  <script type="text/javascript">
+    sidebar_active("profile");
+  </script>
+<% end %>

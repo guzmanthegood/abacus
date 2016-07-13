@@ -7,6 +7,8 @@
 //= require adminlte/plugins/slimScroll/jquery.slimscroll
 //= require adminlte/plugins/datatables/jquery.dataTables
 //= require adminlte/plugins/datatables/dataTables.bootstrap
+//= require adminlte/plugins/select2/select2
+//= require adminlte/plugins/select2/i18n/es
 //= require adminlte/plugins/pace/pace
 //= require_tree .
 //= require turbolinks

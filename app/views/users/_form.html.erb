@@ -14,5 +14,5 @@
     * Si no desea modificar la contraseña deje estos campos en blanco
   </p>
   <%= f.submit class: 'btn btn-primary' %>
-  <%= link_to('<i class="fa fa-trash"></i> Eliminar usuario'.html_safe, user_path(user), method: :delete, data: { confirm: '¿Seguro?' }, class: "btn text-danger pull-right", remote: true) if user.id != nil %>
+  <%= link_to('<i class="fa fa-trash-o"></i> Eliminar usuario'.html_safe, user_path(user), method: :delete, data: { confirm: '¿Seguro?' }, class: "btn text-danger pull-right", remote: true) if user.id != nil %>
 <% end %>

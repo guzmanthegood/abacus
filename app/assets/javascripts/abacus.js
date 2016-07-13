@@ -1,4 +1,16 @@
 $(document).on('turbolinks:load', function() {
+
+  $(".select2").each(function(i) {
+    var x = $(this).attr("placeholder");
+    $(this).select2({
+      placeholder: x
+    });
+  });
+
+
+  
+
+
 	auto_dismissible();
   $(document).ajaxStart(function() { Pace.restart(); });
 });

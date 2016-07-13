@@ -15,20 +15,25 @@
 
     <!-- Navbar Right Menu -->
     <div class="navbar-custom-menu">
-      <ul class="nav navbar-nav">
 
-        <!-- User Account Menu -->
+     
+      <!-- Profile right menu -->
+      <ul class="nav navbar-nav">
+        <li>
+          <%= bootstrap_form_tag url: root_path do |f|  %>
+            <%= f.select :project, project_example_array, 
+                        { hide_label: true, include_blank: true }, 
+                        { class: 'form-control select2', placeholder: 'Ir al proyecto', wrapper_class: 'project-select' } %>
+          <% end %>
+        </li>
+
         <li class="dropdown user user-menu">
-          <!-- Menu Toggle Button -->
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <!-- The user image in the navbar-->
             <%= image_tag 'default-avatar', class: 'user-image', alt: 'User Image' %>
-            <!-- hidden-xs hides the username on small devices so only the image appears. -->
             <span class="hidden-xs"><%= current_user.name %></span>
           </a>
 
           <ul class="dropdown-menu">
-            <!-- The user image in the menu -->
             <li class="user-header">
               <%= image_tag 'default-avatar', class: 'img-circle', alt: 'User Image' %>
               <p>
@@ -37,7 +42,6 @@
               </p>
             </li>
  
-            <!-- Menu Footer-->
             <li class="user-footer">
               <div class="pull-left">
                 <%= link_to 'Mi cuenta', profile_path, class: 'btn btn-default btn-flat' %>
@@ -47,16 +51,13 @@
               </div>
             </li>
           </ul>
-
         </li>
-
-        <!-- Control Sidebar Toggle Button -->
-        <!--
-        <li>
-          <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-        </li>
-        -->
       </ul>
+      <!-- Profile right menu -->
+
     </div>
+    <!-- ./Navbar Right Menu -->
+  
+
   </nav>
 </header>
