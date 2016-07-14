@@ -17,10 +17,10 @@
       <!-- Profile right menu -->
       <ul class="nav navbar-nav">
         <li>
-          <%= bootstrap_form_tag url: root_path do |f|  %>
-            <%= f.select :project, options_for_projects, 
+          <%= bootstrap_form_tag url: '/projects/current', html: {id: 'current_project_form'} do |f|  %>
+            <%= f.select :project_id, options_for_projects(current_user.current_project), 
                         { hide_label: true, include_blank: true }, 
-                        { class: 'form-control select2', placeholder: 'Ir al proyecto', wrapper_class: 'project-select' } %>
+                        { class: 'form-control select2', placeholder: 'Ir al proyecto', wrapper_class: 'project-select', id: 'current_project_select' } %>
           <% end %>
         </li>
 

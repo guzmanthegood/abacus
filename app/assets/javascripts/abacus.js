@@ -1,4 +1,5 @@
 $(document).on('turbolinks:load', function() {
+  bind_select_current_project();
   bind_select2();
 	auto_dismissible();
   $(document).ajaxStart(function() { Pace.restart(); });
@@ -35,4 +36,12 @@ function bind_select2() {
       placeholder: $(this).attr("placeholder")
     });
   });
+}
+
+function bind_select_current_project() {
+  $("#current_project_select").change(function (e) {
+    $("#current_project_form").submit();
+    console.log("select.change: " + $(this).val());
+  });
+
 }

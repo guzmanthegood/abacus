@@ -1,1 +1,18 @@
-hola que tal
+<% content_for :header do %>
+  <i class="fa fa-book"></i> <%= @project.name %><small>Visión general</small>
+<% end %>
+
+<% content_for :breadcrumb do %>
+  <li><%= link_to '<i class="fa fa-home"></i> Inicio'.html_safe, root_path %></li>
+  <li><%= link_to 'Gestión de proyectos'.html_safe, projects_path %></li>
+  <li class="active"><%= @project.name %></li>
+<% end %>
+
+Hola, esto es la vista <b>show</b> del proyecto <b><%= @project.name %></b><br>
+Edítala en: app/views/projects/show.html.erb
+
+<% content_for :js_hacks do %>
+  <script type="text/javascript">
+    sidebar_active("dashboard");
+  </script>
+<% end %>

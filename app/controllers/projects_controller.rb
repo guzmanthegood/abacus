@@ -40,15 +40,11 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
-    respond_to do |format|
-      format.html { redirect_to new_project_session_path, notice: 'El proyecto ha sido eliminado' }
-      format.js { }
-    end
   end
 
   private
     def set_project
-      @project = Project.find(params[:id])
+      @project = Project.find(params[:id] || params[:project_id])
     end
 
     def project_params

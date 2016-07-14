@@ -72,7 +72,7 @@
         <li class="header">GESTIÓN DEL PROYECTO</li>
 
         <li class="dashboard">
-          <%= link_to '#' do %>
+          <%= link_to project_path(current_user.current_project) do %>
             <i class="fa fa-dashboard"></i>
             <span>Visión general</span>
           <% end %>
@@ -106,7 +106,7 @@
         </li>
 
         <li class="config">
-          <%= link_to '#' do %>
+          <%= link_to edit_project_path(current_user.current_project) do %>
             <i class="fa fa-gears"></i>
             <span>Configuración</span>
           <% end %>

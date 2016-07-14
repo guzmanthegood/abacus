@@ -5,8 +5,11 @@ Rails.application.routes.draw do
  	}
 
   resources :projects do
-  	member do
-  		put :current
+    member do
+      put :current
+    end
+  	collection do
+  		post :current
   	end
   end
 

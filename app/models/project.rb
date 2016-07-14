@@ -3,5 +3,5 @@ class Project < ApplicationRecord
 
 	scope :search_by, -> (term) { where("name LIKE '%#{term}%' OR web LIKE '%#{term}%' OR description LIKE '%#{term}%'")}
 
-	has_many :users
+	has_many :users, dependent: :nullify
 end
