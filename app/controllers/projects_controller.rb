@@ -39,7 +39,9 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    redirect = (@project == current_user.current_project)
     @project.destroy
+    redirect_to root_path, notice: 'El proyecto actual ha sido eliminado' if redirect
   end
 
   private

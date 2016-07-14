@@ -41,7 +41,5 @@ function bind_select2() {
 function bind_select_current_project() {
   $("#current_project_select").change(function (e) {
     $("#current_project_form").submit();
-    console.log("select.change: " + $(this).val());
   });
-
 }
