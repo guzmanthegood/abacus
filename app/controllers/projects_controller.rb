@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :current]
   respond_to? :js, :html
 
   def index
@@ -15,6 +15,11 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+  end
+
+  def current
+    current_user.update(current_project: @project)
+    redirect_to project_path(@project), notice: "Proyecto #{@project.name} seleccionado"
   end
 
   def create

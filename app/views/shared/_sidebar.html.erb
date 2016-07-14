@@ -66,41 +66,55 @@
         <% end %>
       </li>
 
-      <li class="header">GESTIÓN DEL PROYECTO</li>
 
-      <li class="config">
-        <%= link_to '#' do %>
-          <i class="fa fa-gears"></i>
-          <span>Configuración</span>
-        <% end %>
-      </li>
+      <% if current_user.current_project.present? %>
 
-      <li class="doc">
-        <%= link_to '#' do %>
-          <i class="fa fa-file"></i>
-          <span>Documentación</span>
-        <% end %>
-      </li>
+        <li class="header">GESTIÓN DEL PROYECTO</li>
 
-      <li class="tasks">
-        <%= link_to '#' do %>
-          <i class="fa fa-cubes"></i>
-          <span>Tareas</span>
-          <span class="pull-right-container">
-            <small class="label label-primary pull-right">0</small>
-          </span>
-        <% end %>
-      </li>
+        <li class="dashboard">
+          <%= link_to '#' do %>
+            <i class="fa fa-dashboard"></i>
+            <span>Visión general</span>
+          <% end %>
+        </li>
 
-      <li class="invoices">
-        <%= link_to '#' do %>
-          <i class="fa fa-money"></i>
-          <span>Facturas</span>
-          <span class="pull-right-container">
-            <small class="label label-primary pull-right">0</small>
-          </span>
-        <% end %>
-      </li>
+        <li class="tasks">
+          <%= link_to '#' do %>
+            <i class="fa fa-cubes"></i>
+            <span>Tareas</span>
+            <span class="pull-right-container">
+              <small class="label label-primary pull-right">0</small>
+            </span>
+          <% end %>
+        </li>
+
+        <li class="invoices">
+          <%= link_to '#' do %>
+            <i class="fa fa-money"></i>
+            <span>Facturas</span>
+            <span class="pull-right-container">
+              <small class="label label-primary pull-right">0</small>
+            </span>
+          <% end %>
+        </li>
+
+        <li class="doc">
+          <%= link_to '#' do %>
+            <i class="fa fa-file"></i>
+            <span>Documentación</span>
+          <% end %>
+        </li>
+
+        <li class="config">
+          <%= link_to '#' do %>
+            <i class="fa fa-gears"></i>
+            <span>Configuración</span>
+          <% end %>
+        </li>
+
+      <% end %>
+
+
     </ul>
 
     <!-- /.sidebar-menu -->
