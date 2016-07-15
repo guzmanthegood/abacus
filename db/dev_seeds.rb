@@ -12,5 +12,5 @@ end
 
 puts "Creating Projects"
 20.times do 
-  Project.create(name: "#{Faker::App.name} project", web: Faker::Internet.url, description: Faker::Hipster.paragraph(2))
+  Project.create(name: "#{Faker::App.name} project", web: Faker::Internet.url, description: Faker::Hipster.paragraph(2), author: User.first)
 end

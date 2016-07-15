@@ -18,7 +18,7 @@ feature 'Projects' do
   end
 
   scenario 'Index shows all projects' do
-    projects = [create(:project), create(:project), create(:project)]
+    projects = [create(:project, author: user), create(:project, author: user), create(:project, author: user)]
     
     visit projects_path
 
@@ -27,6 +27,8 @@ feature 'Projects' do
     projects.each do |project|
       within "#project_#{project.id}" do
         expect(page).to have_content project.name
+        expect(page).to have_content project.author.name
+        expect(page).to have_content (I18n.l project.created_at)
       end
     end
   end 
@@ -62,6 +64,7 @@ feature 'Projects' do
     expect(page).to have_link 'Proyectos 1'
     within "#projects" do
       expect(page).to have_content 'Fulanito Industries'
+      expect(page).to have_content user.name
     end
   end
 
@@ -78,7 +81,7 @@ feature 'Projects' do
   end
 
   scenario 'Update without errors', :js do
-    projects = [create(:project), create(:project), create(:project)]
+    projects = [create(:project, author: user), create(:project, author: user), create(:project, author: user)]
     project = projects.first
 
     visit projects_path
@@ -104,6 +107,7 @@ feature 'Projects' do
 
     within "#projects" do
       expect(page).to have_content 'Fulanito Industries'
+      expect(page).to have_content user.name
     end
   end
 

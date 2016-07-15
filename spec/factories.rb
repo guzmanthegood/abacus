@@ -10,5 +10,6 @@ FactoryGirl.define do
   	name 					{Faker::App.name}
   	web 					{Faker::Internet.url}
   	description		{Faker::Hipster.paragraph(2)}
+
   end
 end

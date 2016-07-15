@@ -4,7 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :recoverable, 
          :rememberable, :trackable, :validatable
 
-	scope :search_by, -> (term) { where("name LIKE '%#{term}%' OR email LIKE '%#{term}%'")}
+  scope :search_by, -> (term) { where("name LIKE '%#{term}%' OR email LIKE '%#{term}%'")}
 
-	belongs_to :current_project, foreign_key: "project_id", class_name: "Project", optional: true
+  belongs_to :current_project, foreign_key: 'project_id', class_name: 'Project', optional: true
+  
+  has_many :projects, foreign_key: :author_id
 end
