@@ -21,10 +21,11 @@ RSpec.describe ProjectsController, :type => :controller do
   describe "#destroy" do
     it "redirect_to root path after destroy current project" do
       projects = [create(:project), create(:project), create(:project)]
+      user.update(current_project: projects.first)
 
-      delete :destroy, params: { id: projects.first.id }
+      delete :destroy, params: { id: projects.first.id }, format: :js
       
-      expect(response).to redirect_to(root_path)
+      expect(response).to be_ok
       expect(flash[:notice]).to eq 'El proyecto actual ha sido eliminado'
     end
   end

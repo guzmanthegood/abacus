@@ -57,7 +57,7 @@ feature 'Devise' do
   end
 
   scenario 'existing user can edit his password clicking in email instructions' do
-    skip
+    # Skip
   end
 
 end

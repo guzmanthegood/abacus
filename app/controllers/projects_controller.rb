@@ -27,21 +27,18 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @project.update(project_params)
-        format.html { redirect_to profile_path, notice: 'Datos del proyecto modificados correctamente' }
-        format.js   { }
-      else
-        format.html { render :show }
-        format.js   { }
-      end    
-    end
+    @project.update(project_params)
   end
 
   def destroy
-    redirect = (@project == current_user.current_project)
+    selected_project = (@project == current_user.current_project)
     @project.destroy
-    redirect_to root_path, notice: 'El proyecto actual ha sido eliminado' if redirect
+
+    if selected_project
+      flash.now.notice = 'El proyecto actual ha sido eliminado'
+      flash.keep(:notice)
+      render js: "window.location = '#{root_path}'"
+    end
   end
 
   private
