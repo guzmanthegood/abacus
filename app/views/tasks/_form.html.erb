@@ -1,9 +1,10 @@
-<%= bootstrap_form_for(task) do |f| %>
+<%= bootstrap_form_for task, remote: true do |f| %>
   <%= f.hidden_field :author_id, value: current_user.id %>
   <%= f.hidden_field :project_id, value: current_user.current_project.id %>
 
   <%= f.text_field :subject %>
   <%= f.text_area :description %>
   <%= f.select :task_type, options_for_task_types() %>
-  <%= f.submit %>
+  <%= f.submit class: 'btn btn-primary' %>
+  <%= link_to 'Cancelar', tasks_path, class: 'btn btn-default', remote: :true %>
 <% end %>

@@ -9,4 +9,6 @@ class Task < ApplicationRecord
 
   scope :search_by, -> (term) { where("subject LIKE '%#{term}%' OR description LIKE '%#{term}%'") }
   scope :by_project, -> (project) { where(project: project) }
+  scope :closed,  -> { where.not(closed_at: nil) }
+  scope :not_closed, -> { where(closed_at: nil) }
 end

@@ -1,0 +1,6 @@
+//$("#layout-notice").html("<%= escape_javascript(render 'shared/notice') %>");
+//bind_auto_dismissible();
+
+
+$("#tasks-body").html("<%= escape_javascript(render 'form', task: @task) %>");
+animate_form_background("form.edit_task", "#00A65A");

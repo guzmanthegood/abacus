@@ -1,11 +1,13 @@
 $(document).on('turbolinks:load', function() {
   bind_select_current_project();
   bind_select2();
-	auto_dismissible();
+  bind_auto_dismissible();
   $(document).ajaxStart(function() { Pace.restart(); });
+
+
 });
 
-function auto_dismissible(){
+function bind_auto_dismissible(){
 	$(".auto-dismissible").fadeTo(3000, 500).slideUp(500, function() {
     $(".auto-dismissible").alert('close');
 	});
@@ -24,6 +26,16 @@ function animate_color(selector, background, color, delete_after) {
     e.removeAttr('style'); // Mini fix -> care with this!
   });
 }
+
+function animate_form_background(form, background) {
+  console.log('form: ' + form);
+  var e = $(form).find('input[type=text], select, textarea');
+  console.log(e);
+  var original_background = e.eq(0).css('backgroundColor');
+  
+  e.animate({backgroundColor: background}, 500).animate({backgroundColor: original_background}, 500);
+}
+
 
 function sidebar_active(e) {
   $("ul.sidebar-menu li").removeClass("active");

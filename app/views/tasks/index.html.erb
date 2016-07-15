@@ -10,44 +10,108 @@
 <% end %>
 
 <div class="row">
-  <div class="col-sm-12 col-xs-12">
+
+  <div class="col-md-3">
+    <%= link_to 'Nueva tarea', new_task_path, class: 'btn btn-primary btn-block margin-bottom', id: 'new-task-btn' %>
+
+    <div class="box box-solid">
+      <div class="box-header with-border">
+        <h3 class="box-title">Estado tareas</h3>
+        <div class="box-tools">
+          <button data-widget="collapse" class="btn btn-box-tool" type="button"><i class="fa fa-minus"></i></button>
+        </div>
+      </div>
+      <div class="box-body no-padding">
+        <ul class="nav nav-pills nav-stacked">
+
+          <li class="active">
+            <%= link_to '#' do %>
+              <i class="fa fa-globe"></i> Todas
+              <span class="label label-info pull-right"><%= Task.by_project(current_user.current_project).count %></span>
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to '#' do %>
+              <i class="fa fa-inbox"></i> Nuevas
+              <span class="label label-warning pull-right"><%= Task.by_project(current_user.current_project).not_closed.count %></span>
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to '#' do %>
+              <i class="fa fa-trophy"></i> Resueltas
+              <span class="label label-success pull-right"><%= Task.by_project(current_user.current_project).closed.count %></span>
+            <% end %>
+          </li>
+
+          <!--
+          <li>
+            <%= link_to '#' do %>
+              <i class="fa fa-envelope-o"></i> Por hacer
+              <span class="label label-primary pull-right">4</span>
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to '#' do %>
+              <i class="fa fa-file-text-o"></i> Planing
+              <span class="label label-warning pull-right">17</span>
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to '#' do %>
+              <i class="fa fa-file-text-o"></i> En curso
+              <span class="label label-warning pull-right">0</span>
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to '#' do %>
+              <i class="fa fa-trash-o"></i> Descartada
+              <span class="label label-danger pull-right">3</span>
+            <% end %>
+          </li>
+          -->
+         
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-9">
 
     <div class="box box-primary">
-      <div class="box-header">
-
-        <%= link_to new_task_path, class: 'btn btn-primary btn-sm btn-social', id: 'new-project-btn' do %>
-          <i class="fa fa-plus"></i>
-          <b>Nueva tarea</b>
-        <% end %>
-
-        <div class="box-tools">
-          <%= form_tag tasks_path, method: :get, remote: true do %>
-            <div style="width: 200px;" class="input-group input-group-sm">
-              <input type="text" placeholder="Buscar" class="form-control pull-right" name="search">
-              <div class="input-group-btn">
-                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
-              </div>
-            </div>
-          <% end %>
+      <div class="box-header with-border">
+        <h3 id="tasks-title"  class="box-title">Listado de tareas</h3>
+        <div id="tasks-tools" class="box-tools">
+          <%= render 'search_box' %>
         </div>
       </div>
 
-      <div class="box-body table-responsive no-padding">
-        <table class="table table-striped table-hover index">
-          <thead>
-            <tr>
-              <th style="width: 10px">#</th>
-              <th style="width: 100px">Tipo</th>
-              <th>Asunto</th>
-              <th>Creado</th>
-              <th>Fecha inicio</th>
-            </tr>
-          </thead>
-          <tbody id="projects">
-            <%= render @tasks %>
-          </tbody>
-        </table>
+      <!--
+      <div class="mailbox-controls">
+        <button class="btn btn-default btn-sm checkbox-toggle" type="button"><i class="fa fa-square-o"></i></button>
+        <div class="btn-group">
+          <button class="btn btn-default btn-sm" type="button"><i class="fa fa-trash-o"></i></button>
+        </div>
+        
+        <div class="pull-right">
+          1-50/200
+          <div class="btn-group">
+            <button class="btn btn-default btn-sm" type="button"><i class="fa fa-chevron-left"></i></button>
+            <button class="btn btn-default btn-sm" type="button"><i class="fa fa-chevron-right"></i></button>
+          </div>
+        </div>
       </div>
+      -->
+
+      <div id="tasks-body" class="box-body table-responsive">
+        <%= render 'tasks_table', tasks: @tasks %>
+      </div>
+
     </div>
 
   </div>

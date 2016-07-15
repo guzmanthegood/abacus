@@ -32,14 +32,8 @@ class TasksController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
-        format.json { render :show, status: :ok, location: @task }
-      else
-        format.html { render :edit }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
+    if @task.update(task_params)
+      flash.now.notice = 'La tarea se ha actualizado correctamente.'
     end
   end
 
@@ -47,7 +41,7 @@ class TasksController < ApplicationController
     @task.destroy
     respond_to do |format|
       format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
-      format.json { head :no_content }
+      format.js { }
     end
   end
 

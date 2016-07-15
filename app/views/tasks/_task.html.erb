@@ -1,7 +1,16 @@
 <tr id="task_<%= task.id %>" class="task">
+	<td><input type="checkbox"></td>
   <td><%= task.id %></td>
-  <td><%= task.task_type %></td>
-  <td><%= task.subject %></td>
-  <td><%= task.author.name if task.author.present? %></td>
-  <td><%= (I18n.l task.created_at) if task.id.present? %></td>
+  <td><%= task_type_label(task.task_type) %></td>
+  <td title="<%= task.subject %>">
+  	<%= link_to edit_task_path(task), remote: true do %>
+  		<%= subject_short(task.subject) %>
+  	<% end %>
+ 	</td>
+  <td title="<%= task.progress %>%">
+  	<div class="progress progress-xs progress-striped">
+      <div style="width: <%= task.progress %>%" class="progress-bar progress-bar-<%= progress_bar_color(task.progress) %>"></div>
+   	</div>
+  </td>
+  <td><%= (I18n.l task.created_at, format: :only_date) if task.id.present? %></td>
 </tr>
