@@ -1,0 +1,7 @@
+<tr id="task_<%= task.id %>" class="task">
+  <td><%= task.id %></td>
+  <td><%= task.task_type %></td>
+  <td><%= task.subject %></td>
+  <td><%= task.author.name if task.author.present? %></td>
+  <td><%= (I18n.l task.created_at) if task.id.present? %></td>
+</tr>

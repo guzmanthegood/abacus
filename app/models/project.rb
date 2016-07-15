@@ -1,8 +1,9 @@
 class Project < ApplicationRecord
-  validates :name, presence: true
+  validates_presence_of :name
 
-  scope :search_by, -> (term) { where("name LIKE '%#{term}%' OR web LIKE '%#{term}%' OR description LIKE '%#{term}%'")}
-
+  has_many :tasks, dependent: :destroy
   has_many :users, dependent: :nullify
   belongs_to :author, foreign_key: 'author_id', class_name: 'User', optional: true
+
+  scope :search_by, -> (term) { where("name LIKE '%#{term}%' OR web LIKE '%#{term}%' OR description LIKE '%#{term}%'") }
 end

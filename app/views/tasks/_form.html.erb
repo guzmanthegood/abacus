@@ -1,0 +1,9 @@
+<%= bootstrap_form_for(task) do |f| %>
+  <%= f.hidden_field :author_id, value: current_user.id %>
+  <%= f.hidden_field :project_id, value: current_user.current_project.id %>
+
+  <%= f.text_field :subject %>
+  <%= f.text_area :description %>
+  <%= f.select :task_type, options_for_task_types() %>
+  <%= f.submit %>
+<% end %>

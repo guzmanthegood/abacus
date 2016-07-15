@@ -79,11 +79,11 @@
         </li>
 
         <li class="tasks">
-          <%= link_to '#' do %>
+          <%= link_to tasks_path do %>
             <i class="fa fa-cubes"></i>
             <span>Tareas</span>
             <span class="pull-right-container">
-              <small class="label label-primary pull-right">0</small>
+              <small class="label label-primary pull-right"><%= Task.by_project(current_user.current_project).count %></small>
             </span>
           <% end %>
         </li>

@@ -23,7 +23,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.create(project_params.merge(author_id: current_user.id))
+    @project = Project.create(project_params)
   end
 
   def update
@@ -47,6 +47,6 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-      params.require(:project).permit(:name, :description, :web)
+      params.require(:project).permit(:name, :description, :web, :author_id)
     end
 end
