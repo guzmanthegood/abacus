@@ -8,7 +8,7 @@ feature 'Profile' do
     login user
   end
 
-  scenario 'link to my account' do
+  scenario 'link to my account in navbar menu' do
     visit root_path
 
     click_link user.name
@@ -16,6 +16,12 @@ feature 'Profile' do
     within "li.dropdown.user" do
       expect(page).to have_link 'Mi cuenta'
     end
+  end
+
+  scenario 'link to my account in sidebar', :js do
+    visit root_path
+
+    expect(page).to have_link 'Mi cuenta'
   end
 
   scenario 'shows user basic info' do

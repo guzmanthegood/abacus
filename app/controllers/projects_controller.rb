@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :current]
   respond_to? :js, :html
 
   def index
@@ -17,33 +17,33 @@ class ProjectsController < ApplicationController
   def edit
   end
 
+  def current
+    current_user.update(current_project: @project)
+    redirect_to project_path(@project), notice: "Proyecto #{@project.name} seleccionado"
+  end
+
   def create
     @project = Project.create(project_params)
   end
 
   def update
-    respond_to do |format|
-      if @project.update(project_params)
-        format.html { redirect_to profile_path, notice: 'Datos del proyecto modificados correctamente' }
-        format.js   { }
-      else
-        format.html { render :show }
-        format.js   { }
-      end    
-    end
+    @project.update(project_params)
   end
 
   def destroy
+    selected_project = (@project == current_user.current_project)
     @project.destroy
-    respond_to do |format|
-      format.html { redirect_to new_project_session_path, notice: 'El proyecto ha sido eliminado' }
-      format.js { }
+
+    if selected_project
+      flash.now.notice = 'El proyecto actual ha sido eliminado'
+      flash.keep(:notice)
+      render js: "window.location = '#{root_path}'"
     end
   end
 
   private
     def set_project
-      @project = Project.find(params[:id])
+      @project = Project.find(params[:id] || params[:project_id])
     end
 
     def project_params
