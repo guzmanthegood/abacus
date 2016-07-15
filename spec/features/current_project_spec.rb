@@ -21,9 +21,9 @@ feature 'Current project' do
 
   scenario 'sidebar shows current project links when a project is selected', :js do
   	project = create(:project)
+    user.update(current_project: project)
   	
   	visit root_path
-  	select project.name, from: 'current_project_select'
 
   	expect(page).to have_content 'GESTIÓN DEL PROYECTO'
   	expect(page).to have_link 'Visión general'
