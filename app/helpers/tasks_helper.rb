@@ -1,6 +1,6 @@
 module TasksHelper
-  def options_for_task_types()
-    options_for_select([['Tarea', 'task'], ['Funcionalidad', 'feature'], ['Error', 'bug']])
+  def options_for_task_types(selected)
+    options_for_select([['Tarea', 'task'], ['Funcionalidad', 'feature'], ['Error', 'bug']], selected)
   end
 
   def subject_short(subject)
@@ -10,11 +10,9 @@ module TasksHelper
   end
 
   def progress_bar_color(progress)
-  	if progress.between?(0, 32)
-  		"danger" 
-  	elsif progress.between?(33, 62)
-  		"warning" 
-  	elsif progress.between?(62, 99)
+  	if progress.between?(0, 49)
+  		"warning"
+  	elsif progress.between?(50, 99)
   		"primary"	
   	else
   		"success"

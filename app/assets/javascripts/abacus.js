@@ -3,8 +3,6 @@ $(document).on('turbolinks:load', function() {
   bind_select2();
   bind_auto_dismissible();
   $(document).ajaxStart(function() { Pace.restart(); });
-
-
 });
 
 function bind_auto_dismissible(){
@@ -28,12 +26,13 @@ function animate_color(selector, background, color, delete_after) {
 }
 
 function animate_form_background(form, background) {
-  console.log('form: ' + form);
   var e = $(form).find('input[type=text], select, textarea');
-  console.log(e);
+  var l = $(form).find('label');
   var original_background = e.eq(0).css('backgroundColor');
+  var original_label_color = e.eq(0).css('color');
   
   e.animate({backgroundColor: background}, 500).animate({backgroundColor: original_background}, 500);
+  l.animate({color: background}, 500).animate({color: original_label_color}, 500);
 }
 
 

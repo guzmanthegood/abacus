@@ -7,6 +7,9 @@ es:
       project:
         one: Proyecto
         other: Proyectos
+      task:
+        one: Tarea
+        other: Tareas
     attributes:
       user:
         name: Nombre
@@ -17,6 +20,11 @@ es:
         name: Nombre
         web: "Página web"
         description: "Descripción"
+      task:
+        subject: Asunto
+        description: "Descripción"
+        task_type: "Tipo de tarea"
+        progress: Progreso
 
     errors:
       messages:

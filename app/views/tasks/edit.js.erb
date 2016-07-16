@@ -1,3 +1,4 @@
 $("#tasks-tools").html("");
 $("#tasks-title").html("Editar tarea #<%= @task.id %>");
 $("#tasks-body").html("<%= escape_javascript(render 'form', task: @task) %>");
+$('.slider').slider();

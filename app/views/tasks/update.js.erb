@@ -1,6 +1,7 @@
-//$("#layout-notice").html("<%= escape_javascript(render 'shared/notice') %>");
-//bind_auto_dismissible();
-
-
+var error = <%= @task.errors.count == 0 ? 0 : 1 %>;
 $("#tasks-body").html("<%= escape_javascript(render 'form', task: @task) %>");
-animate_form_background("form.edit_task", "#00A65A");
+$('.slider').slider();
+
+if (!error) {
+	animate_form_background("form.edit_task", "#00A65A");
+}

@@ -2,9 +2,30 @@
   <%= f.hidden_field :author_id, value: current_user.id %>
   <%= f.hidden_field :project_id, value: current_user.current_project.id %>
 
+  <div class="row">
+    <div class="col-sm-3">
+      <%= f.select :task_type, options_for_task_types(task.task_type) %>
+    </div>
+  </div>
+
   <%= f.text_field :subject %>
   <%= f.text_area :description %>
-  <%= f.select :task_type, options_for_task_types() %>
+
+  <div class="row">
+    <div class="col-sm-3 slider-content">
+      <%= f.text_field :progress, class: 'slider form-control', 
+                      'data-slider-id' => 'blue', 
+                      'data-slider-min' => '0', 
+                      'data-slider-max' => '100', 
+                      'data-slider-ticks'=> '[0, 50, 100]',
+                      'data-slider-ticks-labels' => '["0%", "50%", "100%"]',
+                      'data-slider-ticks-snap-bounds' => '5',
+                      'data-slider-value' => task.progress
+      %>
+      
+    </div>
+  </div>
+  
   <%= f.submit class: 'btn btn-primary' %>
-  <%= link_to 'Cancelar', tasks_path, class: 'btn btn-default', remote: :true %>
+  <%= link_to 'Volver', tasks_path, class: 'btn btn-default', remote: :true %>
 <% end %>

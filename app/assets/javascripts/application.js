@@ -9,6 +9,7 @@
 //= require adminlte/plugins/datatables/dataTables.bootstrap
 //= require adminlte/plugins/select2/select2
 //= require adminlte/plugins/select2/i18n/es
+//= require adminlte/plugins/bootstrap-slider/bootstrap-slider
 //= require adminlte/plugins/pace/pace
 //= require_tree .
 //= require turbolinks
