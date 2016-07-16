@@ -1,7 +1,11 @@
 require 'database_cleaner'
 
 Faker::Config.locale = :es
-DatabaseCleaner.clean_with :truncation
+
+puts "Clearing databaes"
+User.delete_all
+Project.delete_all
+Task.delete_all
 
 puts "Creating Users"
 User.create(name: 'Carlos Rak', email: 'carlos.rak@gmail.com', password: '123456', password_confirmation: '123456')
