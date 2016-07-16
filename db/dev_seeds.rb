@@ -1,8 +1,6 @@
-require 'database_cleaner'
-
 Faker::Config.locale = :es
 
-puts "Clearing databaes"
+puts "Clearing database"
 User.delete_all
 Project.delete_all
 Task.delete_all
