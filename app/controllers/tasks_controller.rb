@@ -50,7 +50,7 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:subject, :description, :progress, :task_type, :author_id, :project_id)
+      params.require(:task).permit(:subject, :description, :progress, :task_type, :status, :author_id, :project_id)
     end
 
     def redirect_if_not_project_selected

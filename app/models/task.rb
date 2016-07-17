@@ -1,5 +1,6 @@
 class Task < ApplicationRecord
   VALID_TYPES = %w( task bug feature )
+  enum status: [:fresh, :todo, :plan, :develop, :testing, :deploy, :done, :rejected]
 
   validates_presence_of :subject
   validates_inclusion_of :task_type, in: VALID_TYPES
@@ -11,4 +12,9 @@ class Task < ApplicationRecord
   scope :by_project, -> (project) { where(project: project) }
   scope :closed,  -> { where.not(closed_at: nil) }
   scope :not_closed, -> { where(closed_at: nil) }
+
+
+  def self.statuses_i18n
+    Task.statuses.keys.map{|s| [I18n.t("task_status.#{s}"), s]}
+  end
 end

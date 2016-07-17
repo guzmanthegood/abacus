@@ -1,0 +1,10 @@
+es:
+  task_status:
+    fresh: "Nueva"
+    todo: "Pendiente"
+    plan: "Plan"
+    develop: "Desarrollo"
+    testing: "Testing"
+    deploy: "Deploy"
+    done: "Resuelta"
+    rejected: "Rechazada"

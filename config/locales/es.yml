@@ -25,7 +25,7 @@ es:
         description: "Descripción"
         task_type: "Tipo de tarea"
         progress: Progreso
-
+        status: Estado
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"

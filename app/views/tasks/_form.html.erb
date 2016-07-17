@@ -7,7 +7,7 @@
       <%= f.select :task_type, options_for_task_types(task.task_type) %>
     </div>
     <div class="col-sm-4">
-      <%#= f.select :progress, options_for_task_progress(task.progress), {prompt: "Tipo de tarea: "} %>
+      <%= f.select :status, Task.statuses_i18n %>
     </div>
     <div class="col-sm-4">
       <%= f.select :progress, options_for_task_progress(task.progress) %>
