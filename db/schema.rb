@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160717170040) do
+ActiveRecord::Schema.define(version: 20160717181358) do
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20160717170040) do
     t.string   "subject"
     t.text     "description"
     t.integer  "progress",    default: 0
-    t.string   "task_type"
+    t.integer  "task_type"
     t.integer  "author_id"
     t.integer  "project_id"
     t.datetime "closed_at"

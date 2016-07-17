@@ -8,3 +8,6 @@ es:
     deploy: "Deploy"
     done: "Resuelta"
     rejected: "Rechazada"
+  task_type:
+    task: "Tarea"
+    bug: "Error"

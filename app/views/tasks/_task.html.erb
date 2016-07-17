@@ -1,7 +1,7 @@
 <tr id="task_<%= task.id %>" class="task">
 	<td><input type="checkbox"></td>
-  <td><%= task.id %></td>
-  <td><%= task_type_label(task.task_type) %></td>
+  <th><%= task.id %></th>
+  <td title="<%= I18n.t "task_type.#{task.task_type}" %>"><%= task_type_label(task) %></td>
   <td><%= I18n.t "task_status.#{task.status}" %></td>
   <td title="<%= task.subject %>">
   	<%= link_to edit_task_path(task), remote: true do %>

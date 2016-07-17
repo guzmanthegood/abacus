@@ -23,13 +23,12 @@ module TasksHelper
   	end
   end
 
-  def task_type_label(task_type)
-  	if task_type == "bug"
-  		"<span class='label label-danger'>Error</span>".html_safe
-  	elsif task_type == "task"
-  		"<span class='label label-primary'>Task</span>".html_safe
-  	elsif task_type == "feature"
-  		"<span class='label label-info'>Feature</span>".html_safe
+  def task_type_label(task)
+  	if task.bug?
+  		"<span class='label label-danger'><i class='fa fa-bug'></i></span>".html_safe
+  	elsif task.task?
+  		"<span class='label bg-purple'><i class='fa fa-pencil'></i></span>".html_safe
   	end
   end
+
 end
