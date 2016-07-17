@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :redirect_if_not_project_selected
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   respond_to? :js, :html
 
@@ -53,4 +54,9 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:subject, :description, :progress, :task_type, :author_id, :project_id)
     end
+
+    def redirect_if_not_project_selected
+      redirect_to root_path unless current_user.current_project
+    end
+
 end

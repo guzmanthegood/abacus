@@ -25,13 +25,13 @@ ActiveRecord::Schema.define(version: 20160715104944) do
   create_table "tasks", force: :cascade do |t|
     t.string   "subject"
     t.text     "description"
-    t.integer  "progress"
+    t.integer  "progress",    default: 0
     t.string   "task_type"
     t.integer  "author_id"
     t.integer  "project_id"
     t.datetime "closed_at"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.index ["author_id"], name: "index_tasks_on_author_id"
     t.index ["project_id"], name: "index_tasks_on_project_id"
   end

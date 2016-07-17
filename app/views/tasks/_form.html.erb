@@ -11,20 +11,22 @@
   <%= f.text_field :subject %>
   <%= f.text_area :description %>
 
-  <div class="row">
-    <div class="col-sm-3 slider-content">
-      <%= f.text_field :progress, class: 'slider form-control', 
-                      'data-slider-id' => 'blue', 
-                      'data-slider-min' => '0', 
-                      'data-slider-max' => '100', 
-                      'data-slider-ticks'=> '[0, 50, 100]',
-                      'data-slider-ticks-labels' => '["0%", "50%", "100%"]',
-                      'data-slider-ticks-snap-bounds' => '5',
-                      'data-slider-value' => task.progress
-      %>
-      
+  <% if task.id.present? %>
+    <div class="row">
+      <div class="col-sm-3 slider-content">
+        <%= f.text_field :progress, class: 'slider form-control', value: 0,
+                        'data-slider-id' => 'blue', 
+                        'data-slider-min' => '0', 
+                        'data-slider-max' => '100', 
+                        'data-slider-ticks'=> '[0, 50, 100]',
+                        'data-slider-ticks-labels' => '["0%", "50%", "100%"]',
+                        'data-slider-ticks-snap-bounds' => '5',
+                        'data-slider-value' => task.progress
+        %>
+        
+      </div>
     </div>
-  </div>
+  <% end %>
   
   <%= f.submit class: 'btn btn-primary' %>
   <%= link_to 'Volver', tasks_path, class: 'btn btn-default', remote: :true %>
