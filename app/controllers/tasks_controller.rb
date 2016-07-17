@@ -33,9 +33,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    if @task.update(task_params)
-      flash.now.notice = 'La tarea se ha actualizado correctamente.'
-    end
+    @task.update(task_params)
   end
 
   def destroy

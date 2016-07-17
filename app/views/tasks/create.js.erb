@@ -1,6 +1,5 @@
 var error = <%= @task.errors.count == 0 ? 0 : 1 %>;
 $("#tasks-body").html("<%= escape_javascript(render 'form', task: @task) %>");
-$('.slider').slider();
 
 if (!error) {
 	$("#tasks-title").html("Editar tarea #<%= @task.id %>");

@@ -26,7 +26,7 @@ function animate_color(selector, background, color, delete_after) {
 }
 
 function animate_form_background(form, background) {
-  var e = $(form).find('input[type=text], select, textarea');
+  var e = $(form).find('input[type=text], select');
   var l = $(form).find('label');
   var original_background = e.eq(0).css('backgroundColor');
   var original_label_color = e.eq(0).css('color');

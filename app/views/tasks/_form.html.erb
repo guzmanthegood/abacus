@@ -3,31 +3,36 @@
   <%= f.hidden_field :project_id, value: current_user.current_project.id %>
 
   <div class="row">
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <%= f.select :task_type, options_for_task_types(task.task_type) %>
+    </div>
+    <div class="col-sm-4">
+      <%#= f.select :progress, options_for_task_progress(task.progress), {prompt: "Tipo de tarea: "} %>
+    </div>
+    <div class="col-sm-4">
+      <%= f.select :progress, options_for_task_progress(task.progress) %>
     </div>
   </div>
 
-  <%= f.text_field :subject %>
-  <%= f.text_area :description %>
+  <%= f.text_field :subject, hide_label: true, placeholder: 'Asunto: ' %>
+  <%= f.text_area :description, hide_label: true, class: 'wysihtml5', placeholder: 'Descripción: ', style: 'height: 250px' %>
 
-  <% if task.id.present? %>
-    <div class="row">
-      <div class="col-sm-3 slider-content">
-        <%= f.text_field :progress, class: 'slider form-control', value: 0,
-                        'data-slider-id' => 'blue', 
-                        'data-slider-min' => '0', 
-                        'data-slider-max' => '100', 
-                        'data-slider-ticks'=> '[0, 50, 100]',
-                        'data-slider-ticks-labels' => '["0%", "50%", "100%"]',
-                        'data-slider-ticks-snap-bounds' => '5',
-                        'data-slider-value' => task.progress
-        %>
-        
-      </div>
-    </div>
-  <% end %>
-  
-  <%= f.submit class: 'btn btn-primary' %>
-  <%= link_to 'Volver', tasks_path, class: 'btn btn-default', remote: :true %>
+  <%= link_to "<i class='fa fa-times'></i> Volver".html_safe, tasks_path, class: 'btn btn-default', remote: true %>
+
+  <div class="pull-right">
+    <!--
+    <%= button_tag type: 'submit', class: 'btn btn-primary', value: "save_and_back" do %>
+      <i class='fa fa-mail-reply-all'></i> Guardar y volver
+    <% end %>
+    -->
+
+    <%= button_tag type: 'submit', class: 'btn btn-primary' do %>
+      <i class='fa fa-save'></i> Guardar
+    <% end %>
+  </div>
 <% end %>
+
+<script type="text/javascript">
+  $(".wysihtml5").wysihtml5();
+  bind_select2();
+</script>
