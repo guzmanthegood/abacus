@@ -9,14 +9,12 @@ class Task < ApplicationRecord
 
   scope :search_by, -> (term) { where("subject LIKE '%#{term}%' OR description LIKE '%#{term}%'") }
   scope :by_project, -> (project) { where(project: project) }
-  scope :closed,  -> { where.not(closed_at: nil) }
-  scope :not_closed, -> { where(closed_at: nil) }
-
+  scope :status, -> (status) { where status: status }
 
   def self.statuses_i18n
     Task.statuses.keys.map{|s| [I18n.t("task_status.#{s}"), s]}
   end
-  
+
   def self.task_types_i18n
     Task.task_types.keys.map{|s| [I18n.t("task_type.#{s}"), s]}
   end

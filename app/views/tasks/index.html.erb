@@ -23,29 +23,40 @@
       </div>
       <div class="box-body no-padding">
         <ul class="nav nav-pills nav-stacked">
-
-          <li class="active">
+          <li>
             <%= link_to '#' do %>
               <i class="fa fa-globe"></i> Todas
-              <span class="label label-info pull-right"><%= Task.by_project(current_user.current_project).count %></span>
+              <span class="label pull-right bg-gray"><%= @tasks.count %></span>
             <% end %>
           </li>
 
+          <% Task.statuses_i18n.each do |status| %>
+            <li>
+              <%= link_to tasks_path(status: status[1]), remote: true do %>
+                <i class="fa <%= task_status_icon(status) %>"></i> <%= status[0] %>
+                <span class="label pull-right <%= task_status_class(status) %>"><%= @tasks.status(status[1]).count %></span>
+              <% end %>
+            </li>
+          <% end %>
+
+
+          
+          <!--
           <li>
             <%= link_to '#' do %>
               <i class="fa fa-inbox"></i> Nuevas
-              <span class="label label-warning pull-right"><%= Task.by_project(current_user.current_project).not_closed.count %></span>
+              <span class="label label-warning pull-right">5</span>
             <% end %>
           </li>
 
           <li>
             <%= link_to '#' do %>
               <i class="fa fa-trophy"></i> Resueltas
-              <span class="label label-success pull-right"><%= Task.by_project(current_user.current_project).closed.count %></span>
+              <span class="label label-success pull-right">0</span>
             <% end %>
           </li>
 
-          <!--
+          
           <li>
             <%= link_to '#' do %>
               <i class="fa fa-envelope-o"></i> Por hacer

@@ -1,8 +1,4 @@
 module TasksHelper
-  def options_for_task_types(selected)
-    options_for_select([['Tarea', 'task'], ['Funcionalidad', 'feature'], ['Error', 'bug']], selected)
-  end
-
   def options_for_task_progress(selected)
     options_for_select((0..100).step(10).map{|i| ["#{i}%",i]}, selected)
   end
@@ -29,6 +25,46 @@ module TasksHelper
   	elsif task.task?
   		"<span class='label bg-purple'><i class='fa fa-pencil'></i></span>".html_safe
   	end
+  end
+
+  def task_status_icon(status)
+    if status[1] == "fresh"
+      "fa-inbox"
+    elsif status[1] == "todo"
+      "fa-clock-o"
+    elsif status[1] == "plan"
+      "fa-calendar"
+    elsif status[1] == "develop"
+      "fa-pencil"
+    elsif status[1] == "testing"
+      "fa-umbrella"
+    elsif status[1] == "deploy"
+      "fa-rocket"
+    elsif status[1] == "done"
+      "fa-trophy"
+    else
+      "fa-trash-o"
+    end
+  end
+
+  def task_status_class(status)
+    if status[1] == "fresh"
+      "bg-yellow"
+    elsif status[1] == "todo"
+      "bg-orange"
+    elsif status[1] == "plan"
+      "bg-teal"
+    elsif status[1] == "develop"
+      "bg-blue"
+    elsif status[1] == "testing"
+      "bg-purple"
+    elsif status[1] == "deploy"
+      "bg-maroon"
+    elsif status[1] == "done"
+      "bg-green"
+    else
+      "bg-red"
+    end
   end
 
 end
