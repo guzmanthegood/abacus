@@ -1,10 +1,10 @@
 class TasksController < ApplicationController
   before_action :redirect_if_not_project_selected
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_tasks, only: [:index, :update, :create, :destroy]
   respond_to? :js, :html
 
   def index
-    @tasks = Task.project(current_user.current_project).filter(params.slice(:status))
     @project = current_user.current_project
   end
 
@@ -19,17 +19,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
-
-    respond_to do |format|
-      if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
-        format.js { }
-      else
-        format.html { render :new }
-        format.js { }
-      end
-    end
+    @task = Task.create(task_params)
   end
 
   def update
@@ -38,15 +28,15 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
-      format.js { }
-    end
   end
 
   private
     def set_task
       @task = Task.find(params[:id])
+    end
+
+    def set_tasks
+      @tasks = Task.project(current_user.current_project).filter(params.slice(:status))
     end
 
     def task_params

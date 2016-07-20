@@ -41,12 +41,12 @@ function sidebar_active(e) {
   $("ul.sidebar-menu li." + e).addClass("active");
 }
 
-function task_status_active(e) {
-  $("ul.task-status-menu li").removeClass("active");
+function status_active(e) {
+  $("ul.status-menu li").removeClass("active");
   if (!e || e.length === 0)
-    $("ul.task-status-menu li.all").addClass("active");
+    $("ul.status-menu li.all").addClass("active");
   else
-    $("ul.task-status-menu li." + e).addClass("active");
+    $("ul.status-menu li." + e).addClass("active");
 }
 
 function bind_select2() {

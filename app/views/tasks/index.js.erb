@@ -1,4 +1,4 @@
 $("#tasks-tools").html("<%= escape_javascript(render 'search_box') %>");
 $("#tasks-title").html("Listado de tareas");
 $("#tasks-body").html("<%= escape_javascript(render 'tasks', tasks: @tasks) %>");
-task_status_active("<%= params[:status] %>");
+status_active("<%= params[:status] %>");

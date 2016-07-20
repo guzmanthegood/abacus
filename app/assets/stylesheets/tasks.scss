@@ -23,7 +23,7 @@ body.tasks {
   }
 
   /* Task status bg color and icon */
-  ul.task-status-menu{
+  ul.status-menu{
     li.all{
       span.label{background-color: #D2D6DE; color: #000}
       i:before{content: "\f0ac"}

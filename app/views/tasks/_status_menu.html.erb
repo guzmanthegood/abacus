@@ -1,0 +1,17 @@
+<ul class="nav nav-pills nav-stacked status-menu">
+  <li class="active all">
+    <%= link_to tasks_path, remote: true do %>
+      <i class="fa"></i> Todas
+      <span class="label pull-right"><%= tasks.count %></span>
+    <% end %>
+  </li>
+
+  <% Task.statuses_i18n.each do |label, key| %>
+    <li class="<%= key %>">
+      <%= link_to tasks_path(status: key), remote: true do %>
+        <i class="fa"></i> <%= label %>
+        <span class="label pull-right"><%= tasks.status(key).count %></span>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
