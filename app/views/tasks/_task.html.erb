@@ -1,25 +1,27 @@
-<tr id="task_<%= task.id %>" class="task">
-	<td><input type="checkbox"></td>
+<tr id='task_<%= task.id %>' class='task'>
+	<td><input type='checkbox'></td>
   
   <th><%= task.id %></th>
   
-  <td title="<%= I18n.t "task_type.#{task.task_type}" %>">
+  <td title='<%= I18n.t "task_type.#{task.task_type}" %>'>
     <span class='label task-bg-<%= task.task_type %>'><i class='fa'></i></span>
     <span class="hide"><%= task.task_type.first %></span>
   </td>
   
-  <td><%= I18n.t "task_status.#{task.status}" %></td>
+  <td class='<%= task.status %>'>
+    <span class='label'><%= I18n.t "task_status.#{task.status}" %></span>
+  </td>
 
-  <td title="<%= task.subject %>">
+  <td title='<%= task.subject %>'>
   	<%= link_to edit_task_path(task), remote: true do %>
   		<%= subject_short(task.subject) %>
   	<% end %>
  	</td>
 
-  <td title="<%= task.progress %>%">
-    <span class="hide"><%= task.progress == 100 ? 99 : task.progress %></span>
-  	<div class="progress progress-xs progress-striped">
-      <div style="width: <%= task.progress %>%" class="progress-bar progress-bar-<%= progress_bar_color(task.progress) %>"></div>
+  <td title='<%= task.progress %>%'>
+    <span class='hide'><%= task.progress == 100 ? 99 : task.progress %></span>
+  	<div class='progress progress-xs progress-striped'>
+      <div style='width: <%= task.progress %>%' class='progress-bar progress-bar-<%= progress_bar_color(task.progress) %>'></div>
    	</div>
   </td>
 

@@ -23,44 +23,43 @@ body.tasks {
   }
 
   /* Task status bg color and icon */
-  ul.status-menu{
-    li.all{
-      span.label{background-color: #D2D6DE; color: #000}
-      i:before{content: "\f0ac"}
-    }
-    li.fresh{
-      span.label{background-color: #f39c12}
-      i:before{content: "\f01c"}
-    }
-    li.todo{
-      span.label{background-color: #ff851b}
-      i:before{content: "\f017"}
-    }
-    li.plan{
-      span.label{background-color: #39CCCC}
-      i:before{content: "\f073"}
-    }
-    li.develop{
-      span.label{background-color: #3c8dbc}
-      i:before{content: "\f040"}
-    }
-    li.testing{
-      span.label{background-color: #605ca8}
-      i:before{content: "\f0e9"}
-    }
-    li.deploy{
-      span.label{background-color: #D81B60}
-      i:before{content: "\f135"}
-    }
-    li.done{
-      span.label{background-color: #00a65a}
-      i:before{content: "\f091"}
-    }
-    li.rejected{
-      span.label{background-color: #D33724}
-      i:before{content: "\f00d"}
-    }
+  ul.status-menu li.all {
+    span.label{background-color: #D2D6DE; color: #000}
+    i:before{content: "\f0ac"}
   }
+  ul.status-menu li.fresh, td.fresh {
+    span.label{background-color: #f39c12}
+    i:before{content: "\f01c"}
+  }
+  ul.status-menu li.todo, td.todo {
+    span.label{background-color: #ff851b}
+    i:before{content: "\f017"}
+  }
+  ul.status-menu li.plan, td.plan {
+    span.label{background-color: #39CCCC}
+    i:before{content: "\f073"}
+  }
+  ul.status-menu li.develop, td.develop {
+    span.label{background-color: #3c8dbc}
+    i:before{content: "\f040"}
+  }
+  ul.status-menu li.testing, td.testing {
+    span.label{background-color: #605ca8}
+    i:before{content: "\f0e9"}
+  }
+  ul.status-menu li.deploy, td.deploy {
+    span.label{background-color: #D81B60}
+    i:before{content: "\f135"}
+  }
+  ul.status-menu li.done, td.done {
+    span.label{background-color: #00a65a}
+    i:before{content: "\f091"}
+  }
+  ul.status-menu li.rejected, td.rejected {
+    span.label{background-color: #D33724}
+    i:before{content: "\f00d"}
+  }
+  
 
   /* fix nav-pills active background effect */
   .nav-pills > li.active > a, 
