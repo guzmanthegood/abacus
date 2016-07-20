@@ -3,6 +3,7 @@ $("#tasks-body").html("<%= escape_javascript(render 'form', task: @task) %>");
 
 if (!error) {
   $("div.status-menu-div").html("<%= escape_javascript(render 'status_menu', tasks: @tasks) %>");
+  status_active("<%= session[:status] %>");
   $("#sidebar-tasks-label").html(parseInt($("#sidebar-tasks-label").text()) + 1);
 	$("#tasks-title").html("Editar tarea #<%= @task.id %>");
 	animate_form_background("form.edit_task", "#00A65A");
