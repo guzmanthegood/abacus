@@ -12,7 +12,7 @@ body.tasks {
     }
   }
 
-  /* Task type bg color */
+  /* Task type bg color and icon */
   .task-bg-task{
     background-color: #555299;
     i:before{content: "\f040"}
@@ -30,7 +30,7 @@ body.tasks {
   .task-icon-testing:before{content: "\f0e9"}
   .task-icon-deploy:before{content: "\f135"}
   .task-icon-done:before{content: "\f091"}
-  .task-icon-rejected:before{content: "\f014"}
+  .task-icon-rejected:before{content: "\f00d"}
 
   /* Task type bg color */
   .task-bg-fresh{background-color: #f39c12}
