@@ -8,5 +8,5 @@ class User < ApplicationRecord
   has_many :tasks, foreign_key: :author_id
   has_many :projects, foreign_key: :author_id
 
-  scope :search_by, -> (term) { where("name LIKE '%#{term}%' OR email LIKE '%#{term}%'") }
+  scope :search, -> (term) { where("name LIKE '%#{term}%' OR email LIKE '%#{term}%'") }
 end

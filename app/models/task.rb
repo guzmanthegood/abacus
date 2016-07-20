@@ -7,8 +7,8 @@ class Task < ApplicationRecord
   belongs_to :project
   belongs_to :author, foreign_key: 'author_id', class_name: 'User'
 
-  scope :search_by, -> (term) { where("subject LIKE '%#{term}%' OR description LIKE '%#{term}%'") }
-  scope :by_project, -> (project) { where(project: project) }
+  scope :search, -> (term) { where("subject LIKE '%#{term}%' OR description LIKE '%#{term}%'") }
+  scope :project, -> (project) { where(project: project) }
   scope :status, -> (status) { where status: status }
 
   def self.statuses_i18n

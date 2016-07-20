@@ -83,7 +83,7 @@
             <i class="fa fa-cubes"></i>
             <span>Tareas</span>
             <span class="pull-right-container">
-              <small class="label label-primary pull-right"><%= Task.by_project(current_user.current_project).count %></small>
+              <small class="label label-primary pull-right"><%= Task.project(current_user.current_project).count %></small>
             </span>
           <% end %>
         </li>

@@ -5,5 +5,5 @@ class Project < ApplicationRecord
   has_many :users, dependent: :nullify
   belongs_to :author, foreign_key: 'author_id', class_name: 'User', optional: true
 
-  scope :search_by, -> (term) { where("name LIKE '%#{term}%' OR web LIKE '%#{term}%' OR description LIKE '%#{term}%'") }
+  scope :search, -> (term) { where("name LIKE '%#{term}%' OR web LIKE '%#{term}%' OR description LIKE '%#{term}%'") }
 end

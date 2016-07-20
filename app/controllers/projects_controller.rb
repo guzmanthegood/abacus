@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   respond_to? :js, :html
 
   def index
-    @projects = Project.search_by(params[:search])
+    @projects = Project.search(params[:search])
     @project = Project.new
   end
 
