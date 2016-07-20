@@ -30,61 +30,14 @@
             <% end %>
           </li>
 
-          <% Task.statuses_i18n.each do |status| %>
+          <% Task.statuses_i18n.each do |label, key| %>
             <li>
-              <%= link_to tasks_path(status: status[1]), remote: true do %>
-                <i class="fa <%= task_status_icon(status) %>"></i> <%= status[0] %>
-                <span class="label pull-right <%= task_status_class(status) %>"><%= @tasks.status(status[1]).count %></span>
+              <%= link_to tasks_path(status: key), remote: true do %>
+                <i class="fa task-icon-<%= key %>"></i> <%= label %>
+                <span class="label pull-right task-bg-<%= key %>"><%= @tasks.status(key).count %></span>
               <% end %>
             </li>
           <% end %>
-
-
-          
-          <!--
-          <li>
-            <%= link_to '#' do %>
-              <i class="fa fa-inbox"></i> Nuevas
-              <span class="label label-warning pull-right">5</span>
-            <% end %>
-          </li>
-
-          <li>
-            <%= link_to '#' do %>
-              <i class="fa fa-trophy"></i> Resueltas
-              <span class="label label-success pull-right">0</span>
-            <% end %>
-          </li>
-
-          
-          <li>
-            <%= link_to '#' do %>
-              <i class="fa fa-envelope-o"></i> Por hacer
-              <span class="label label-primary pull-right">4</span>
-            <% end %>
-          </li>
-
-          <li>
-            <%= link_to '#' do %>
-              <i class="fa fa-file-text-o"></i> Planing
-              <span class="label label-warning pull-right">17</span>
-            <% end %>
-          </li>
-
-          <li>
-            <%= link_to '#' do %>
-              <i class="fa fa-file-text-o"></i> En curso
-              <span class="label label-warning pull-right">0</span>
-            <% end %>
-          </li>
-
-          <li>
-            <%= link_to '#' do %>
-              <i class="fa fa-trash-o"></i> Descartada
-              <span class="label label-danger pull-right">3</span>
-            <% end %>
-          </li>
-          -->
          
         </ul>
       </div>
@@ -120,7 +73,7 @@
       -->
 
       <div id="tasks-body" class="box-body">
-        <%= render 'tasks_table', tasks: @tasks %>
+        <%= render 'tasks', tasks: @tasks %>
       </div>
 
     </div>

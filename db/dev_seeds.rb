@@ -1,6 +1,6 @@
 Faker::Config.locale = :es
 
-puts "Clearing database"
+puts "Clearing DataBase"
 User.delete_all
 Project.delete_all
 Task.delete_all
@@ -22,9 +22,10 @@ Project.all.each do |project|
 	[*3..20].sample.times do
 		Task.create(	subject: Faker::Hipster.sentence, 
 									description: Faker::Hipster.paragraph(3), 
-									progress: Faker::Number.between(0, 100), 
+									progress: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100].sample, 
 									author: User.all.sample, 
 									project: project,
-									task_type: ['task', 'bug', 'feature'].sample 	)
+									task_type: Task.task_types.values.sample,
+									status: Task.statuses.values.sample )
 	end
 end
