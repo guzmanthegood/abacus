@@ -5,6 +5,7 @@
   
   <td title="<%= I18n.t "task_type.#{task.task_type}" %>">
     <span class='label task-bg-<%= task.task_type %>'><i class='fa'></i></span>
+    <span class="hide"><%= task.task_type.first %></span>
   </td>
   
   <td><%= I18n.t "task_status.#{task.status}" %></td>
@@ -16,6 +17,7 @@
  	</td>
 
   <td title="<%= task.progress %>%">
+    <span class="hide"><%= task.progress == 100 ? 99 : task.progress %></span>
   	<div class="progress progress-xs progress-striped">
       <div style="width: <%= task.progress %>%" class="progress-bar progress-bar-<%= progress_bar_color(task.progress) %>"></div>
    	</div>
