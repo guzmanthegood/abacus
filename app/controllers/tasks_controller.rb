@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   respond_to? :js, :html
 
   def index
-    @tasks = Task.project(current_user.current_project)
+    @tasks = Task.project(current_user.current_project).filter(params.slice(:status))
     @project = current_user.current_project
   end
 

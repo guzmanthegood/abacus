@@ -1,4 +1,6 @@
 class Task < ApplicationRecord
+  include Filterable
+  
   enum task_type: [:task, :bug]
   enum status: [:fresh, :todo, :plan, :develop, :testing, :deploy, :done, :rejected]
 

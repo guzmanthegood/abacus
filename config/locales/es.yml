@@ -23,7 +23,7 @@ es:
       task:
         subject: Asunto
         description: "Descripción"
-        task_type: "Tipo de tarea"
+        task_type: Tipo
         progress: Progreso
         status: Estado
     errors:
