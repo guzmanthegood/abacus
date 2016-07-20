@@ -6,6 +6,7 @@ class TasksController < ApplicationController
 
   def index
     @project = current_user.current_project
+    session[:status] = params[:status]
   end
 
   def show
