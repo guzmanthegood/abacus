@@ -7,7 +7,7 @@
       <th>Estado</th>
       <th>Asunto</th>
       <th>Progreso</th>
-      <th>Fecha inicio</th>
+      <th>Creada</th>
     </tr>
   </thead>
   <tbody id="tasks">
@@ -22,7 +22,9 @@
     "pageLength": 15,
     "columnDefs": [
       { "orderable": false, "targets": 0 },
-      { "width": "10px", "targets": [0,1,2,3] }
+      { "width": "10px", "targets": [0,1,2,3] },
+      { "type": "num", "targets": [1] },
+      { "type": "date", "targets": [6] }
     ]
   });
 </script>

@@ -237,4 +237,5 @@ es:
       long: "%d de %B de %Y a %H:%M"
       short: "%d de %b %H:%M"
       only_date: "%d/%m/%Y"
+      table: "%Y/%m/%d"
     pm: pm
