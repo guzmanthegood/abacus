@@ -1,3 +1,4 @@
-$("#tasks-title").html("Listado de tareas");
+<% status = I18n.t("task_status.#{params[:status]}").downcase if params[:status].present? %>
+$("#tasks-title").html('Listado de tareas <%= status %>');
 $("#tasks-body").html("<%= escape_javascript(render 'tasks', tasks: @tasks) %>");
 status_active("<%= params[:status] %>");
