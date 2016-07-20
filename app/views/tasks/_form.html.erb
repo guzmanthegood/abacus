@@ -1,6 +1,7 @@
 <%= bootstrap_form_for task, remote: true do |f| %>
   <%= f.hidden_field :author_id, value: current_user.id %>
   <%= f.hidden_field :project_id, value: current_user.current_project.id %>
+  <%= hidden_field_tag :status, params[:status] %>
 
   <div class="row">
     <div class="col-sm-4">

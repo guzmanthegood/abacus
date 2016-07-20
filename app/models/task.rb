@@ -20,4 +20,12 @@ class Task < ApplicationRecord
   def self.task_types_i18n
     Task.task_types.keys.map{|s| [I18n.t("task_type.#{s}"), s]}
   end
+
+  def self.next(tasks, task)
+    tasks.where("id > ?", task.id).first
+  end
+
+  def self.prev(tasks, task)
+    tasks.where("id < ?", task.id).last
+  end
 end

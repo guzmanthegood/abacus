@@ -3,17 +3,19 @@
   
   <th><%= task.id %></th>
   
-  <td title='<%= I18n.t "task_type.#{task.task_type}" %>'>
-    <span class='label task-bg-<%= task.task_type %>'><i class='fa'></i></span>
+  <td>
+    <span data-toggle='tooltip' title='<%= I18n.t "task_type.#{task.task_type}" %>' class='label task-bg-<%= task.task_type %>'><i class='fa'></i></span>
     <span class="hide"><%= task.task_type.first %></span>
   </td>
   
   <td class='<%= task.status %>'>
-    <span class='label'><%= I18n.t "task_status.#{task.status}" %></span>
+    <%= link_to tasks_path(status: task.status), remote: true do %>
+      <span class='label'><%= I18n.t "task_status.#{task.status}" %></span>
+    <% end %>
   </td>
 
   <td title='<%= task.subject %>'>
-  	<%= link_to edit_task_path(task), remote: true do %>
+  	<%= link_to edit_task_path(task, status: session[:status]), remote: true do %>
   		<%= subject_short(task.subject) %>
   	<% end %>
  	</td>

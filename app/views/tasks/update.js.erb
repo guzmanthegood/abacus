@@ -3,6 +3,7 @@ $("#tasks-body").html("<%= escape_javascript(render 'form', task: @task) %>");
 
 if (!error) {
   $("div.status-menu-div").html("<%= escape_javascript(render 'status_menu', tasks: @tasks) %>");
+  $("#tasks-tools").html("<%= escape_javascript(render 'nav_buttons', task: @task) %>");
   status_active("<%= session[:status] %>");
   animate_form_background("form.edit_task", "#00A65A");
 }

@@ -2,6 +2,7 @@ var error = <%= @task.errors.count == 0 ? 0 : 1 %>;
 $("#tasks-body").html("<%= escape_javascript(render 'form', task: @task) %>");
 
 if (!error) {
+	$("#tasks-tools").html("<%= escape_javascript(render 'nav_buttons', task: @task) %>");
   $("div.status-menu-div").html("<%= escape_javascript(render 'status_menu', tasks: @tasks) %>");
   status_active("<%= session[:status] %>");
   $("#sidebar-tasks-label").html(parseInt($("#sidebar-tasks-label").text()) + 1);
