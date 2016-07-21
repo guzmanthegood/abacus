@@ -5,7 +5,7 @@ module TasksHelper
 
   def subject_short(subject)
   	str = subject[0..45]
-  	str << " ..." if subject.length > 45
+  	str << "..." if subject.length > 45
   	str
   end
 

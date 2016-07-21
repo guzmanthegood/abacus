@@ -17,7 +17,7 @@ feature 'Projects' do
   end
 
   scenario 'Index shows all projects' do
-    projects = [create(:project, author: user), create(:project, author: user), create(:project, author: user)]
+    projects = [create(:project), create(:project), create(:project)]
     
     visit projects_path
 
@@ -80,7 +80,7 @@ feature 'Projects' do
   end
 
   scenario 'Update without errors', :js do
-    projects = [create(:project, author: user), create(:project, author: user), create(:project, author: user)]
+    projects = [create(:project), create(:project), create(:project)]
     project = projects.first
 
     visit projects_path
