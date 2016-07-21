@@ -17,12 +17,16 @@ I18n.default_locale = :es
 
 ActiveRecord::Migration.maintain_test_schema!
 
-RSpec.configure do |config|
-  config.infer_spec_type_from_file_location!
-  config.include Devise::Test::ControllerHelpers, :type => :controller
-end
-
 Capybara.exact = true
 Capybara.javascript_driver = :poltergeist
 Capybara::Screenshot.autosave_on_failure = true
 Capybara::Screenshot.webkit_options = { width: 1920, height: 1080 }
+
+RSpec.configure do |config|
+  config.infer_spec_type_from_file_location!
+  config.include Devise::Test::ControllerHelpers, :type => :controller
+
+  config.before :each, :js, type: :feature do
+    page.driver.resize_window(1920, 1080)
+  end
+end

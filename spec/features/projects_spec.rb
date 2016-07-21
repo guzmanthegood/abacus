@@ -4,7 +4,6 @@ feature 'Projects' do
   let(:user)  {create(:user)}
 
   before do
-    page.driver.resize_window(1920, 1080) if js_active?
     login user
   end
 
@@ -45,7 +44,7 @@ feature 'Projects' do
     end
   end
 
-  scenario 'Index shows new project link', :js do
+  scenario 'Index shows new project link' do
     visit projects_path
 
     expect(page).to have_link 'Nuevo proyecto'

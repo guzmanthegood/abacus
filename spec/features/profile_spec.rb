@@ -4,7 +4,6 @@ feature 'Profile' do
   let(:user)  {create(:user)}
 
   before do
-    page.driver.resize_window(1920, 1080) if js_active?
     login user
   end
 
