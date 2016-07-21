@@ -1,3 +1,4 @@
+<% tasks = Task.project(current_user.current_project) %>
 <ul class="nav nav-pills nav-stacked status-menu">
   <li class="active all">
     <%= link_to tasks_path, remote: true do %>

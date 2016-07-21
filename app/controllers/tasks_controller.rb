@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :redirect_if_not_project_selected
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :set_tasks, only: [:index, :new, :update, :create, :destroy, :edit]
-  before_action :set_prev_next_task, only: [:edit, :update, :new, :create]
+  before_action :set_prev_next_task, only: [:edit, :update, :new]
   respond_to? :js, :html
 
   def index
@@ -22,6 +22,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.create(task_params)
+    set_prev_next_task
   end
 
   def update
