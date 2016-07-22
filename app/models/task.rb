@@ -13,6 +13,14 @@ class Task < ApplicationRecord
   scope :project, -> (project) { where(project: project) }
   scope :status, -> (status) { where status: status }
 
+  def task_type_i18n
+    I18n.t "task_type.#{task_type}"
+  end
+
+  def status_i18n
+    I18n.t "task_status.#{status}"
+  end
+
   def self.statuses_i18n
     Task.statuses.keys.map{|s| [I18n.t("task_status.#{s}"), s]}
   end

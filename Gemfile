@@ -17,6 +17,8 @@ gem 'jquery-ui-rails'
 gem 'font-awesome-rails'
 gem 'ionicons-rails'
 gem 'bootstrap_form'
+gem 'bootstrap-wysihtml5-rails'
+
 gem 'faker'
 
 group :development, :test do

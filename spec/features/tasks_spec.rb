@@ -45,7 +45,7 @@ feature 'Tasks' do
       expect(page).to have_link 'Nueva tarea'
     end
 
-    scenario 'shows status menu links' do
+    scenario 'shows all status menu links' do
       visit tasks_path
 
       within 'ul.status-menu' do
@@ -77,21 +77,160 @@ feature 'Tasks' do
     end
   end
 
+  context 'Create' do
+    before do
+      user.update(current_project: project)
+    end
+
+    scenario 'new task', :js do
+      visit tasks_path
+
+      expect(page).to have_link 'Todas 0'
+
+      click_link 'Nueva tarea'
+
+      select 'Error', from: 'Tipo'
+      select 'Desarrollo', from: 'Estado'
+      select '20%', from: 'Progreso'
+      fill_in 'Asunto', with: 'Un asunto para una tarea'
+      fill_in_wysihtml5 '#task_description', 'Esto es una tarea muy importante por que....'
+      click_button 'Guardar'
+
+      expect(page).to have_link 'Todas 1'
+      expect(page).to have_link 'Desarrollo 1'
+      expect(page).to have_select 'Tipo', selected: 'Error'
+      expect(page).to have_select 'Estado', selected: 'Desarrollo'
+      expect(page).to have_select 'Progreso', selected: '20%'
+      expect(page).to have_field 'Asunto', with: 'Un asunto para una tarea'
+      expect(wysihtml5_value('#task_description')).to eq('Esto es una tarea muy importante por que....')
+    end
+
+    scenario 'new task with errors', :js do
+      visit tasks_path
+
+      expect(page).to have_link 'Todas 0'
+
+      click_link 'Nueva tarea'
+      click_button 'Guardar'
+
+      expect(page).to have_content 'no puede estar en blanco'
+      expect(page).to have_link 'Todas 0'
+    end
+  end
+
+  context 'Update' do
+    before do
+      user.update(current_project: project)
+      @task = create(:task, project: project)
+    end
+
+    scenario 'edit task', :js do
+      visit tasks_path
+
+      expect(page).to have_link 'Todas 1'
+      expect(page).to have_link "#{@task.status_i18n} 1"
+
+      click_link subject_short(@task.subject)
+
+      expect(page).to have_select 'Tipo', selected: @task.task_type_i18n
+      expect(page).to have_select 'Estado', selected: @task.status_i18n
+      expect(page).to have_select 'Progreso', selected: "#{@task.progress}%"
+      expect(page).to have_field 'Asunto', with: @task.subject
+      expect(wysihtml5_value('#task_description')).to eq(@task.description)
+
+      select 'Error', from: 'Tipo'
+      select 'Desarrollo', from: 'Estado'
+      select '20%', from: 'Progreso'
+      fill_in 'Asunto', with: 'Un asunto para una tarea'
+      fill_in_wysihtml5 '#task_description', 'Esto es una tarea muy importante por que....'
+      click_button 'Guardar'
+
+      expect(page).to have_link 'Todas 1'
+      expect(page).to have_link "Desarrollo 1"
+      expect(page).to have_select 'Tipo', selected: 'Error'
+      expect(page).to have_select 'Estado', selected: 'Desarrollo'
+      expect(page).to have_select 'Progreso', selected: '20%'
+      expect(page).to have_field 'Asunto', with: 'Un asunto para una tarea'
+      expect(wysihtml5_value('#task_description')).to eq('Esto es una tarea muy importante por que....')
+    end
+
+    scenario 'edit task with errors', :js do
+      visit tasks_path
+
+      click_link subject_short(@task.subject)
+
+      fill_in 'Asunto', with: ''
+      click_button 'Guardar'
+
+      expect(page).to have_content 'no puede estar en blanco'
+    end
+  end
+
+  context 'Nav buttons' do
+    before do
+      user.update(current_project: project)
+      sample_user = create(:user)
+
+      @tasks = [  create(:task, project: project, author: sample_user),
+                  create(:task, project: project, author: sample_user),
+                  create(:task, project: project, author: sample_user),
+                  create(:task, project: project, author: sample_user),
+                  create(:task, project: project, author: sample_user)  ]
+    end
+
+    scenario 'can go forward and backward in the tasks', :js do
+      first = @tasks.shift
+      last = @tasks.pop
+
+      visit tasks_path
+
+      click_link subject_short(first.subject)
+      
+      expect(page).to have_content("Editar tarea ##{first.id}")
+      expect(page).not_to have_selector 'a.btn i.fa-chevron-left'
+      expect(page).to have_selector 'a.btn i.fa-chevron-right'
+      
+      @tasks.each do |task|
+        find('a.btn i.fa-chevron-right').click
+        expect(page).to have_content("Editar tarea ##{task.id}")
+        expect(page).to have_selector 'a.btn i.fa-chevron-left'
+        expect(page).to have_selector 'a.btn i.fa-chevron-right'
+      end
+
+      find('a.btn i.fa-chevron-right').click
+      expect(page).to have_content("Editar tarea ##{last.id}")
+      expect(page).to have_selector 'a.btn i.fa-chevron-left'
+      expect(page).not_to have_selector 'a.btn i.fa-chevron-right'
+
+      @tasks.reverse_each do |task|
+        find('a.btn i.fa-chevron-left').click
+        expect(page).to have_content("Editar tarea ##{task.id}")
+        expect(page).to have_selector 'a.btn i.fa-chevron-left'
+        expect(page).to have_selector 'a.btn i.fa-chevron-right'
+      end
+
+      find('a.btn i.fa-chevron-left').click
+      expect(page).to have_content("Editar tarea ##{first.id}")
+      expect(page).not_to have_selector 'a.btn i.fa-chevron-left'
+      expect(page).to have_selector 'a.btn i.fa-chevron-right'
+    end
+  end
+
   context 'Status filter' do
     before do
       user.update(current_project: project)
       sample_user = create(:user)
 
-      @fresh_tasks =   [ create(:task, project: project, author: sample_user, status: :fresh), 
+      @fresh_tasks =  [ create(:task, project: project, author: sample_user, status: :fresh), 
                         create(:task, project: project, author: sample_user, status: :fresh), 
                         create(:task, project: project, author: sample_user, status: :fresh),
                         create(:task, project: project, author: sample_user, status: :fresh)]
-      @todo_tasks =    [ create(:task, project: project, author: sample_user, status: :todo), 
+      @todo_tasks =   [ create(:task, project: project, author: sample_user, status: :todo), 
                         create(:task, project: project, author: sample_user, status: :todo)]
-      @deploy_tasks =  [ create(:task, project: project, author: sample_user, status: :deploy), 
+      @deploy_tasks = [ create(:task, project: project, author: sample_user, status: :deploy), 
                         create(:task, project: project, author: sample_user, status: :deploy), 
                         create(:task, project: project, author: sample_user, status: :deploy)]
-      @done_tasks =    [ create(:task, project: project, author: sample_user, status: :done), 
+      @done_tasks =   [ create(:task, project: project, author: sample_user, status: :done), 
                         create(:task, project: project, author: sample_user, status: :done)]
     end
 
@@ -136,7 +275,7 @@ feature 'Tasks' do
 
     end
 
-    scenario 'shows no results when click in empty status', :js do
+    scenario 'shows no results when click in empty taks status', :js do
       visit tasks_path
 
       click_link "Desarrollo 0"
@@ -148,7 +287,7 @@ feature 'Tasks' do
       expect(page).not_to have_link subject_short(@done_tasks.first.subject)
     end
 
-    scenario 'index remember user status selection when turn back from task form', :js do
+    scenario 'remember user status selection when turn back from task form', :js do
       visit tasks_path
 
       click_link "Pendiente #{@todo_tasks.count}"
@@ -163,5 +302,20 @@ feature 'Tasks' do
       expect(page).not_to have_link subject_short(@done_tasks.first.subject)
     end
 
+    scenario 'click on status row label filter by status', :js do
+      visit tasks_path
+
+      within '#tasks-body' do
+        within "#task_#{@todo_tasks.first.id}" do
+          click_link 'Pendiente'
+        end
+      end
+
+      expect(page).to have_selector 'ul.status-menu li.todo.active'
+      expect(page).to have_link subject_short(@todo_tasks.first.subject)
+      expect(page).not_to have_link subject_short(@fresh_tasks.first.subject)
+      expect(page).not_to have_link subject_short(@deploy_tasks.first.subject)
+      expect(page).not_to have_link subject_short(@done_tasks.first.subject)
+    end
   end
 end

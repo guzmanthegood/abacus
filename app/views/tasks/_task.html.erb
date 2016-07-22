@@ -4,13 +4,13 @@
   <th><%= task.id %></th>
   
   <td>
-    <span data-toggle='tooltip' title='<%= I18n.t "task_type.#{task.task_type}" %>' class='label task-bg-<%= task.task_type %>'><i class='fa'></i></span>
+    <span data-toggle='tooltip' title='<%= task.task_type_i18n %>' class='label task-bg-<%= task.task_type %>'><i class='fa'></i></span>
     <span class="hide"><%= task.task_type.first %></span>
   </td>
   
   <td class='<%= task.status %>'>
     <%= link_to tasks_path(status: task.status), remote: true do %>
-      <span class='label'><%= I18n.t "task_status.#{task.status}" %></span>
+      <span class='label'><%= task.status_i18n %></span>
     <% end %>
   </td>
 

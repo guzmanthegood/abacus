@@ -16,7 +16,7 @@
   </div>
 
   <%= f.text_field :subject, hide_label: true, placeholder: 'Asunto: ' %>
-  <%= f.text_area :description, hide_label: true, class: 'wysihtml5', placeholder: 'Descripción: ', style: 'height: 250px' %>
+  <%= f.text_area :description, hide_label: true, placeholder: 'Descripción: ', style: 'height: 250px' %>
 
   <%= link_to "<i class='fa fa-times'></i> Volver".html_safe, tasks_path(status: session[:status]) , class: 'btn btn-default', remote: true %>
 
@@ -34,5 +34,5 @@
 <% end %>
 
 <script type="text/javascript">
-  $(".wysihtml5").wysihtml5();
+  $("textarea").wysihtml5();
 </script>
