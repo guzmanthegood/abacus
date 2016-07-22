@@ -21,12 +21,6 @@
   <%= link_to "<i class='fa fa-times'></i> Volver".html_safe, tasks_path(status: session[:status]) , class: 'btn btn-default', remote: true %>
 
   <div class="pull-right">
-    <!--
-    <%= button_tag type: 'submit', class: 'btn btn-primary', value: "save_and_back" do %>
-      <i class='fa fa-mail-reply-all'></i> Guardar y volver
-    <% end %>
-    -->
-
     <%= button_tag type: 'submit', class: 'btn btn-primary' do %>
       <i class='fa fa-save'></i> Guardar
     <% end %>

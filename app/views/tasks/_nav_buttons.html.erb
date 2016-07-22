@@ -1,10 +1,10 @@
 <% if @prev.present? %>
-	<%= link_to edit_task_path(@prev, status: session[:status]), {class: 'btn btn-default btn-sm', title: 'Anterior', 'data-toggle' => 'tooltip', remote: true}  do %>
-		<i class="fa fa-chevron-left"></i>
-	<% end %>
+  <%= link_to edit_task_path(@prev, status: session[:status]), {class: 'btn btn-default btn-sm', title: 'Anterior', 'data-toggle' => 'tooltip', remote: true}  do %>
+    <i class="fa fa-chevron-left"></i>
+  <% end %>
 <% end %>
 <% if @next.present? %>
-	<%= link_to edit_task_path(@next, status: session[:status]), {class: 'btn btn-default btn-sm', title: 'Anterior', 'data-toggle' => 'tooltip', remote: true} do %>
-		<i class="fa fa-chevron-right"></i>
-	<% end %>
+  <%= link_to edit_task_path(@next, status: session[:status]), {class: 'btn btn-default btn-sm', title: 'Anterior', 'data-toggle' => 'tooltip', remote: true} do %>
+    <i class="fa fa-chevron-right"></i>
+  <% end %>
 <% end %>

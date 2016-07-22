@@ -1,5 +1,5 @@
 <tr id='task_<%= task.id %>' class='task'>
-	<td><input type='checkbox'></td>
+  <td><input type='checkbox'></td>
   
   <th><%= task.id %></th>
   
@@ -15,16 +15,16 @@
   </td>
 
   <td title='<%= task.subject %>'>
-  	<%= link_to edit_task_path(task, status: session[:status]), remote: true do %>
-  		<%= subject_short(task.subject) %>
-  	<% end %>
- 	</td>
+    <%= link_to edit_task_path(task, status: session[:status]), remote: true do %>
+      <%= subject_short(task.subject) %>
+    <% end %>
+  </td>
 
   <td title='<%= task.progress %>%'>
     <span class='hide'><%= task.progress == 100 ? 99 : task.progress %></span>
-  	<div class='progress progress-xs progress-striped'>
+    <div class='progress progress-xs progress-striped'>
       <div style='width: <%= task.progress %>%' class='progress-bar progress-bar-<%= progress_bar_color(task.progress) %>'></div>
-   	</div>
+    </div>
   </td>
 
   <td><%= (I18n.l (task.created_at), format: :table) if task.id.present? %></td>

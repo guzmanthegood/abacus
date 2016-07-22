@@ -18,5 +18,4 @@ module TasksHelper
   		"success"
   	end
   end
-
 end

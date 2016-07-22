@@ -19,6 +19,7 @@ gem 'ionicons-rails'
 gem 'bootstrap_form'
 gem 'bootstrap-wysihtml5-rails'
 
+# Faker
 gem 'faker'
 
 group :development, :test do

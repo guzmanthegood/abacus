@@ -6,9 +6,9 @@ $(document).on('turbolinks:load', function() {
 });
 
 function bind_auto_dismissible(){
-	$(".auto-dismissible").fadeTo(3000, 500).slideUp(500, function() {
+  $(".auto-dismissible").fadeTo(3000, 500).slideUp(500, function() {
     $(".auto-dismissible").alert('close');
-	});
+  });
 }
 
 function animate_color(selector, background, color, delete_after) {
