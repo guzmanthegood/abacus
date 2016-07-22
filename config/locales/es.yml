@@ -7,6 +7,9 @@ es:
       project:
         one: Proyecto
         other: Proyectos
+      task:
+        one: Tarea
+        other: Tareas
     attributes:
       user:
         name: Nombre
@@ -17,7 +20,12 @@ es:
         name: Nombre
         web: "Página web"
         description: "Descripción"
-
+      task:
+        subject: Asunto
+        description: "Descripción"
+        task_type: Tipo
+        progress: Progreso
+        status: Estado
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"
@@ -229,4 +237,5 @@ es:
       long: "%d de %B de %Y a %H:%M"
       short: "%d de %b %H:%M"
       only_date: "%d/%m/%Y"
+      table: "%Y/%m/%d"
     pm: pm

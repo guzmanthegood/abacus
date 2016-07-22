@@ -2,7 +2,6 @@ require 'rails_helper'
 
 feature 'Devise' do
   before do
-    page.driver.resize_window(1920, 1080) if js_active?
     ActionMailer::Base.deliveries.clear
   end
 

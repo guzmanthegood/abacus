@@ -4,7 +4,6 @@ feature 'Projects' do
   let(:user)  {create(:user)}
 
   before do
-    page.driver.resize_window(1920, 1080) if js_active?
     login user
   end
 
@@ -18,7 +17,7 @@ feature 'Projects' do
   end
 
   scenario 'Index shows all projects' do
-    projects = [create(:project, author: user), create(:project, author: user), create(:project, author: user)]
+    projects = [create(:project), create(:project), create(:project)]
     
     visit projects_path
 
@@ -45,7 +44,7 @@ feature 'Projects' do
     end
   end
 
-  scenario 'Index shows new project link', :js do
+  scenario 'Index shows new project link' do
     visit projects_path
 
     expect(page).to have_link 'Nuevo proyecto'
@@ -81,7 +80,7 @@ feature 'Projects' do
   end
 
   scenario 'Update without errors', :js do
-    projects = [create(:project, author: user), create(:project, author: user), create(:project, author: user)]
+    projects = [create(:project), create(:project), create(:project)]
     project = projects.first
 
     visit projects_path

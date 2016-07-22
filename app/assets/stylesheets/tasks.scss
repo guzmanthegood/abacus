@@ -1,0 +1,71 @@
+body.tasks {
+  form {
+    .slider-content .form-group{
+      padding-right: 40px;
+    }
+    .slider{
+      margin-top: -10px;
+      margin-left: 16px;
+    }
+    .slider-tick-label{
+      margin-top: 14px;
+    }
+  }
+
+  /* Task type bg color and icon */
+  .task-bg-task{
+    background-color: #555299;
+    i:before{content: "\f040"}
+  }
+  .task-bg-bug{
+    background-color: #D33724;
+    i:before{content: "\f188"}
+  }
+
+  /* Task status bg color and icon */
+  ul.status-menu li.all {
+    span.label{background-color: #D2D6DE; color: #000}
+    i:before{content: "\f0ac"}
+  }
+  ul.status-menu li.fresh, td.fresh {
+    span.label{background-color: #f39c12}
+    i:before{content: "\f01c"}
+  }
+  ul.status-menu li.todo, td.todo {
+    span.label{background-color: #ff851b}
+    i:before{content: "\f017"}
+  }
+  ul.status-menu li.plan, td.plan {
+    span.label{background-color: #39CCCC}
+    i:before{content: "\f073"}
+  }
+  ul.status-menu li.develop, td.develop {
+    span.label{background-color: #3c8dbc}
+    i:before{content: "\f040"}
+  }
+  ul.status-menu li.testing, td.testing {
+    span.label{background-color: #605ca8}
+    i:before{content: "\f0e9"}
+  }
+  ul.status-menu li.deploy, td.deploy {
+    span.label{background-color: #D81B60}
+    i:before{content: "\f135"}
+  }
+  ul.status-menu li.done, td.done {
+    span.label{background-color: #00a65a}
+    i:before{content: "\f091"}
+  }
+  ul.status-menu li.rejected, td.rejected {
+    span.label{background-color: #D33724}
+    i:before{content: "\f00d"}
+  }
+  
+
+  /* fix nav-pills active background effect */
+  .nav-pills > li.active > a, 
+  .nav-pills > li.active > a:hover, 
+  .nav-pills > li.active > a:focus {
+    background-color: #FFF;
+    color: #000;
+  }
+}

@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   respond_to? :js, :html
 
   def index
-    @users = User.search_by(params[:search])
+    @users = User.search(params[:search])
     @user = User.new
   end
 

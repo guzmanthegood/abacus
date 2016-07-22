@@ -1,0 +1,30 @@
+<table class="table table-bordered table-hover index">
+  <thead>
+    <tr>
+      <th><input type="checkbox"></th>
+      <th>#Id</th>
+      <th>Tipo</th>
+      <th>Estado</th>
+      <th>Asunto</th>
+      <th>Progreso</th>
+      <th>Creada</th>
+    </tr>
+  </thead>
+  <tbody id="tasks">
+    <%= render tasks %>
+  </tbody>
+</table>
+<script type="text/javascript">
+  $('table.index').DataTable({
+    "order": [[ 1, 'asc' ]],
+    "lengthChange": false,
+    "autoWidth": false,
+    "pageLength": 15,
+    "columnDefs": [
+      { "orderable": false, "targets": 0 },
+      { "width": "10px", "targets": [0,1,2,3] },
+      { "type": "num", "targets": [1] },
+      { "type": "date", "targets": [6] }
+    ]
+  });
+</script>

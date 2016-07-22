@@ -17,6 +17,10 @@ gem 'jquery-ui-rails'
 gem 'font-awesome-rails'
 gem 'ionicons-rails'
 gem 'bootstrap_form'
+gem 'bootstrap-wysihtml5-rails'
+
+# Faker
+gem 'faker'
 
 group :development, :test do
   gem 'sqlite3'
@@ -27,7 +31,6 @@ group :development, :test do
   gem 'capybara'
   gem 'capybara-screenshot'
   gem 'factory_girl_rails'
-  gem 'faker'
 end
 
 group :development do
