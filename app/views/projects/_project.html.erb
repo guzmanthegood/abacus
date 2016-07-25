@@ -4,4 +4,5 @@
   <td><%= project.name %></td>
   <td><%= project.author.name if project.author.present? %></td>
   <td><%= (I18n.l project.created_at) if project.id.present? %></td>
+  <td><%= project.tasks.count %></td>
 </tr>

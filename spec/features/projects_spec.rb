@@ -28,6 +28,7 @@ feature 'Projects' do
         expect(page).to have_content project.name
         expect(page).to have_content project.author.name
         expect(page).to have_content (I18n.l project.created_at)
+        expect(page).to have_content (project.tasks.count)
       end
     end
   end 
