@@ -8,6 +8,6 @@ module CommonActions
   end
 
   def wysihtml5_value(selector)
-    page.evaluate_script %Q{ $('#{selector}').data("wysihtml5").editor.getValue() }
+    CGI.unescapeHTML page.evaluate_script %Q{ $('#{selector}').data("wysihtml5").editor.getValue() }
   end
 end
