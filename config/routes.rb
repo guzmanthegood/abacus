@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :tasks
   devise_for :users, controllers: { 
   	sessions: 'users/sessions',
   	passwords: 'users/passwords'
@@ -14,6 +13,7 @@ Rails.application.routes.draw do
   	end
   end
 
+  resources :tasks
   resources :users
   get 'profile', to: 'users#show'
 
