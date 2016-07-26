@@ -1,3 +1,1 @@
-$("#tasks-title").html("Editar tarea #<%= @task.id %>");
-$("#tasks-tools").html("<%= escape_javascript(render 'nav_buttons') %>");
-$("#tasks-body").html("<%= escape_javascript(render 'form', task: @task) %>");
+$("#main-frame").html("<%= escape_javascript(render 'edit', task: @task) %>");
