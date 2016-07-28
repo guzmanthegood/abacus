@@ -4,7 +4,7 @@
       <a href="#tab_edit" data-toggle="tab"><i class="fa fa-edit"></i> Editar tarea #<%= task.id %></a>
     </li>
     <li>
-      <a href="#tab_work" data-toggle="tab"><i class="fa fa-clock-o"></i> Tiempo dedicado</a>
+      <a href="#tab_jobs" data-toggle="tab"><i class="fa fa-clock-o"></i> Tiempo dedicado</a>
     </li>
 
     <%= render 'nav_buttons' %>
@@ -16,8 +16,8 @@
       <%= render 'form', task: task %>
     </div>
     
-    <div class="tab-pane" id="tab_work">
-      <%= render 'works/works', works: task.works %>
+    <div class="tab-pane" id="tab_jobs">
+      <%= render 'jobs/jobs', jobs: task.jobs %>
     </div>
     
   </div>
