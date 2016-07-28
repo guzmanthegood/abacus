@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   resources :tasks
+  resources :jobs
   resources :users
   get 'profile', to: 'users#show'
 

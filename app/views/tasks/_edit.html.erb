@@ -1,23 +1,23 @@
-<div class="nav-tabs-custom">
-  <ul class="nav nav-tabs">
-    <li class="active">
-      <a href="#tab_edit" data-toggle="tab"><i class="fa fa-edit"></i> Editar tarea #<%= task.id %></a>
+<div class='nav-tabs-custom'>
+  <ul class='nav nav-tabs'>
+    <li class='active'>
+      <a href='#tab_edit' data-toggle='tab'><i class='fa fa-edit'></i> Editar tarea #<%= task.id %></a>
     </li>
     <li>
-      <a href="#tab_jobs" data-toggle="tab"><i class="fa fa-clock-o"></i> Tiempo dedicado</a>
+      <a href='#tab_jobs' data-toggle='tab'><i class='fa fa-clock-o'></i> Tiempo dedicado</a>
     </li>
 
     <%= render 'nav_buttons' %>
   </ul>
 
-  <div class="tab-content">
+  <div class='tab-content'>
     
-    <div class="tab-pane active" id="tab_edit">
+    <div class='tab-pane active' id='tab_edit'>
       <%= render 'form', task: task %>
     </div>
     
-    <div class="tab-pane" id="tab_jobs">
-      <%= render 'jobs/jobs', jobs: task.jobs %>
+    <div class='tab-pane' id='tab_jobs'>
+      <%= render 'jobs/jobs', task: task %>
     </div>
     
   </div>

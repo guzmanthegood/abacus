@@ -1,14 +1,29 @@
-<table class="table table-bordered table-hover index">
+<div class='total-hours'>
+  Total: <%= total_hours(task.jobs) %> horas
+</div>
+
+<%= link_to 'Añadir tiempo', '#jobs-form', {'data-toggle' => 'collapse'} %>
+<div class='collapse' id='jobs-form'>
+  <%= render 'jobs/form', job: Job.new, task: task %>
+</div>
+
+<table class='table table-bordered table-hover index'>
   <thead>
     <tr>
       <th>Fecha</th>
       <th>Usuario</th>
-      <th>Comentario</th>
+      <th>Descripción</th>
       <th>Horas</th>
       <th></th>
     </tr>
   </thead>
-  <tbody id="jobs">
-    <%= render jobs %>
+  <tbody id='jobs'>
+    <% if task.jobs.count > 0 %>
+      <%= render task.jobs %>
+    <% else %>
+      <td colspan='5'>No hay tiempo dedicado</td>
+    <% end %>
   </tbody>
 </table>
+
+<%= link_to "<i class='fa fa-times'></i> Volver".html_safe, tasks_path(status: session[:status]) , class: 'btn btn-default', remote: true %>

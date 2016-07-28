@@ -4,8 +4,8 @@ class CreateJobs < ActiveRecord::Migration[5.0]
       t.integer :task_id
       t.integer :user_id
       t.datetime :performed_at
-      t.string :comment
-      t.decimal :time
+      t.string :description
+      t.decimal :hours
 
       t.timestamps
     end

@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 20160725081001) do
     t.integer  "task_id"
     t.integer  "user_id"
     t.datetime "performed_at"
-    t.string   "comment"
-    t.decimal  "time"
+    t.string   "description"
+    t.decimal  "hours"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["task_id"], name: "index_jobs_on_task_id"

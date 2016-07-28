@@ -1,6 +1,8 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
 
+  respond_to? :js, :html
+
   def index
     @jobs = Job.all
   end
@@ -16,17 +18,7 @@ class JobsController < ApplicationController
   end
 
   def create
-    @job = Job.new(job_params)
-
-    respond_to do |format|
-      if @job.save
-        format.html { redirect_to @job, notice: 'Job was successfully created.' }
-        format.json { render :show, status: :created, location: @job }
-      else
-        format.html { render :new }
-        format.json { render json: @job.errors, status: :unprocessable_entity }
-      end
-    end
+    @job = Job.create(job_params)
   end
 
   def update
@@ -55,6 +47,6 @@ class JobsController < ApplicationController
     end
 
     def job_params
-      params.require(:job).permit(:task_id, :user_id, :performed_at, :comment, :time)
+      params.require(:job).permit(:task_id, :user_id, :performed_at, :description, :hours)
     end
 end
