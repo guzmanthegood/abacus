@@ -8,7 +8,7 @@ class Task < ApplicationRecord
 
   belongs_to :project
   belongs_to :author, foreign_key: 'author_id', class_name: 'User'
-  has_many :jobs
+  has_many :jobs, dependent: :destroy
 
   scope :search, -> (term) { where("subject LIKE '%#{term}%' OR description LIKE '%#{term}%'") }
   scope :project, -> (project) { where(project: project) }
