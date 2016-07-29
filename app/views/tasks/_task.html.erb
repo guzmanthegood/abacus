@@ -27,5 +27,7 @@
     </div>
   </td>
 
+  <td><%= total_hours(task.jobs) %></td>
+
   <td><%= (I18n.l (task.created_at), format: :table) if task.id.present? %></td>
 </tr>

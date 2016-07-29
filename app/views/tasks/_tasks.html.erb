@@ -7,6 +7,7 @@
       <th>Estado</th>
       <th>Asunto</th>
       <th>Progreso</th>
+      <th>Horas</th>
       <th>Creada</th>
     </tr>
   </thead>
@@ -22,9 +23,9 @@
     "pageLength": 15,
     "columnDefs": [
       { "orderable": false, "targets": 0 },
-      { "width": "10px", "targets": [0,1,2,3] },
-      { "type": "num", "targets": [1] },
-      { "type": "date", "targets": [6] }
+      { "width": "10px", "targets": [0,1,2,3,6] },
+      { "type": "num", "targets": [1, 6] },
+      { "type": "date", "targets": [7] }
     ]
   });
 </script>
