@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   	passwords: 'users/passwords'
  	}
 
+  resources :users
+  get 'profile', to: 'users#show'
+
   resources :projects do
     member do
       put :current
@@ -14,10 +17,8 @@ Rails.application.routes.draw do
   end
 
   resources :tasks
-  resources :jobs
-  resources :users
-  get 'profile', to: 'users#show'
-
+  resources :jobs, only: [:create, :destroy]
+  
   root 'static#home'
   get 'static/example'
   get 'static/home'

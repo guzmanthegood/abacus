@@ -30,7 +30,7 @@ Project.all.each do |project|
   end
 end
 
-puts 'Creating jobs'
+puts 'Creating Jobs'
 Task.all.each do |task|
   [*0..5].sample.times do
     Job.create( task: task,

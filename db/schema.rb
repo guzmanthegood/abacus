@@ -15,11 +15,11 @@ ActiveRecord::Schema.define(version: 20160725081001) do
   create_table "jobs", force: :cascade do |t|
     t.integer  "task_id"
     t.integer  "user_id"
-    t.datetime "performed_at"
+    t.datetime "performed_at", default: '2016-07-29 00:00:00'
     t.string   "description"
-    t.decimal  "hours"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.decimal  "hours",        default: "0.0"
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.index ["task_id"], name: "index_jobs_on_task_id"
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end

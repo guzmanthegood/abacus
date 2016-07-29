@@ -1,0 +1,5 @@
+var error = <%= @job.errors.count == 0 ? 0 : 1 %>;
+if (!error) {
+  animate_color("#job_<%=@job.id %>", "#D33724", "#FFF", true);
+  $('div.total-hours').html("<%= escape_javascript(total_hours_str(@job.task.jobs)) %>")
+};

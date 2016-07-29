@@ -1,11 +1,11 @@
 class CreateJobs < ActiveRecord::Migration[5.0]
   def change
     create_table :jobs do |t|
-      t.integer :task_id
-      t.integer :user_id
-      t.datetime :performed_at
-      t.string :description
-      t.decimal :hours
+      t.integer   :task_id
+      t.integer   :user_id
+      t.datetime  :performed_at, default: Date.today
+      t.string    :description
+      t.decimal   :hours,        default: 0
 
       t.timestamps
     end
