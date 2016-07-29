@@ -10,4 +10,14 @@
   td:nth-child(5){
     text-align: right;
   }
+
+  td:nth-child(5) a{
+    opacity: 0.15;
+  }
+
+  tr:hover{
+    td:nth-child(5) a{
+      opacity: 1.0;
+    }
+  }
 }

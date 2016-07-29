@@ -4,6 +4,6 @@
   <td><%= job.description %></td>
   <td><%= number_with_precision job.hours, precision: 2 %> h.</td>
   <td>
-    <%= link_to('<i class="fa fa-times"></i>'.html_safe, job_path(job), 
-                  method: :delete, data: { confirm: '¿Seguro?' }, class: '', remote: true) %></td>
+    <%= link_to("<i class='fa fa-times'></i>".html_safe, job_path(job), 
+                  method: :delete, data: { confirm: '¿Seguro?' }, class: 'text-danger', remote: true) %></td>
 </tr>
