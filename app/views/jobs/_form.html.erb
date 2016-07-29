@@ -1,9 +1,14 @@
 <%= bootstrap_form_for job, remote: true do |f| %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.hidden_field :task_id, value: task.id %>
-  
+
   <div class='row'>
-    <%= f.text_field :performed_at, hide_label: true, placeholder: 'Fecha: ', class: 'input-sm', wrapper_class: 'col-sm-2' %>
+    <%#= f.text_field :performed_at, hide_label: true, placeholder: 'Fecha: ', class: 'input-sm', wrapper_class: 'col-sm-2' %>
+
+    <%= f.text_field :performed_at, hide_label: true, placeholder: 'Fecha: ',
+                      prepend: "<i class='fa fa-calendar'></i>".html_safe,
+                      wrapper_class: 'col-sm-2', class: 'input-sm', id: 'datemask' %>
+
     <%= f.text_field :description, hide_label: true, placeholder: 'Descripción: ', class: 'input-sm', wrapper_class: 'col-sm-7'  %>
     <%= f.text_field :hours, hide_label: true, placeholder: 'Horas: ', class: 'input-sm', wrapper_class: 'col-sm-2'  %>
     <div class='form-group col-sm-1'>
@@ -14,3 +19,7 @@
   </div>
 <% end %>
 <hr>
+
+<script type="text/javascript">
+  $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+</script>

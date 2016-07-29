@@ -3,7 +3,7 @@ class CreateJobs < ActiveRecord::Migration[5.0]
     create_table :jobs do |t|
       t.integer   :task_id
       t.integer   :user_id
-      t.datetime  :performed_at, default: Date.today
+      t.datetime  :performed_at
       t.string    :description
       t.decimal   :hours,        default: 0
 

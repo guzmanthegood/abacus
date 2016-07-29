@@ -7,5 +7,6 @@ if (error) {
   $('#jobs-form').html("<%= escape_javascript(render 'jobs/form', job: Job.new, task: @job.task) %>");
   $('div.total-hours').html("<%= escape_javascript(total_hours_str(@job.task.jobs)) %>")
   $("<%= escape_javascript(render @job) %>").appendTo("#jobs");
+  $('#jobs-form').collapse('hide');
   animate_color("#job_<%=@job.id %>", "#00A65A", "#FFF");
 }
