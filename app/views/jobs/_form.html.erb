@@ -1,3 +1,5 @@
+<% performed_at = @job.present? ? (I18n.l @job.performed_at, format: :only_date) : (I18n.l Time.now, format: :only_date)  %>
+
 <%= bootstrap_form_for job, remote: true do |f| %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.hidden_field :task_id, value: task.id %>
@@ -5,7 +7,7 @@
   <div class='row'>
     <%#= f.text_field :performed_at, hide_label: true, placeholder: 'Fecha: ', class: 'input-sm', wrapper_class: 'col-sm-2' %>
 
-    <%= f.text_field :performed_at, hide_label: true, placeholder: 'Fecha: ',
+    <%= f.text_field :performed_at, hide_label: true, placeholder: 'Fecha: ', value: performed_at,
                       prepend: "<i class='fa fa-calendar'></i>".html_safe,
                       wrapper_class: 'col-sm-2', class: 'input-sm', id: 'datemask' %>
 
