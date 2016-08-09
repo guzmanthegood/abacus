@@ -5,16 +5,14 @@
   <%= f.hidden_field :task_id, value: task.id %>
 
   <div class='row'>
-    <%#= f.text_field :performed_at, hide_label: true, placeholder: 'Fecha: ', class: 'input-sm', wrapper_class: 'col-sm-2' %>
-
     <%= f.text_field :performed_at, hide_label: true, placeholder: 'Fecha: ', value: performed_at,
                       prepend: "<i class='fa fa-calendar'></i>".html_safe,
-                      wrapper_class: 'col-sm-2', class: 'input-sm', id: 'datemask' %>
+                      wrapper_class: 'col-sm-2', class: 'input-sm' %>
 
     <%= f.text_field :description, hide_label: true, placeholder: 'Descripción: ', class: 'input-sm', wrapper_class: 'col-sm-7'  %>
     <%= f.text_field :hours, hide_label: true, placeholder: 'Horas: ', class: 'input-sm', wrapper_class: 'col-sm-2'  %>
     <div class='form-group col-sm-1'>
-      <%= button_tag type: 'submit', class: 'btn btn-flat btn-sm btn-primary' do %>
+      <%= button_tag type: 'submit', class: 'btn btn-flat btn-sm btn-primary', id: 'add_job_button' do %>
         <i class='fa fa-plus'></i>
       <% end %>
     </div>
@@ -23,5 +21,5 @@
 <hr>
 
 <script type="text/javascript">
-  $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+  $("#job_performed_at").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
 </script>

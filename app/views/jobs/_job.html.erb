@@ -2,7 +2,7 @@
   <td><%= I18n.l(job.performed_at, format: :only_date) if job.performed_at.present? %></td>
   <td><%= job.user.name %></td>
   <td><%= job.description %></td>
-  <td><%= number_with_precision job.hours, precision: 2 %> h.</td>
+  <td><%= hours_str(job.hours) %></td>
   <td>
     <%= link_to("<i class='fa fa-times'></i>".html_safe, job, 
                   method: :delete, data: { confirm: '¿Seguro?' }, class: 'text-danger', remote: true) %>

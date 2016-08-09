@@ -1,5 +1,6 @@
 require 'rails_helper'
 include TasksHelper
+include JobsHelper
 
 feature 'Tasks' do
   let(:user)    {create(:user)}
@@ -60,9 +61,22 @@ feature 'Tasks' do
       tasks = [ create(:task, project: project), create(:task, project: project), 
                 create(:task, project: project), create(:task, project: project) ]
 
+      jobs = [  create(:job, task: tasks.first), create(:job, task: tasks.first), 
+                create(:job, task: tasks.last), create(:job, task: tasks.last) ]
+
       visit tasks_path
 
       within '#tasks-body' do
+        within 'table thead tr' do
+          expect(page).to have_content '#Id'
+          expect(page).to have_content 'Tipo'
+          expect(page).to have_content 'Estado'
+          expect(page).to have_content 'Asunto'
+          expect(page).to have_content 'Progreso'
+          expect(page).to have_content 'Horas'
+          expect(page).to have_content 'Creada'
+        end
+
         tasks.each do |task|
           within "#task_#{task.id}" do
             expect(page).to have_content task.id
@@ -70,7 +84,9 @@ feature 'Tasks' do
             expect(page).to have_link I18n.t "task_status.#{task.status}"
             expect(page).to have_link subject_short(task.subject)
             expect(page).to have_content (task.progress == 100 ? 99 : task.progress)
+            expect(page).to have_content total_hours(task.jobs)
             expect(page).to have_content I18n.l (task.created_at), format: :table
+            page!
           end
         end
       end

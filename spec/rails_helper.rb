@@ -25,6 +25,7 @@ Capybara::Screenshot.webkit_options = { width: 1920, height: 1080 }
 RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.include Devise::Test::ControllerHelpers, :type => :controller
+  config.include ActionView::Helpers::NumberHelper, type: :feature
 
   config.before :each, :js, type: :feature do
     page.driver.resize_window(1920, 1080)
