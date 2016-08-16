@@ -1,6 +1,6 @@
 module JobsHelper
   def total_hours(jobs)
-  	hours_str(jobs.inject(0){|s,i| s + i.hours})
+    hours_str(jobs.inject(0){|s,i| s + i.hours})
   end
 
   def hours_str(hours)
