@@ -84,4 +84,32 @@ feature 'Jobs' do
     end
   end
 
+  scenario 'create new job with errors', :js do
+    visit tasks_path
+
+    click_link subject_short(@task.subject)
+    click_link 'Tiempo dedicado'
+    click_link 'Añadir tiempo'
+    
+    fill_in 'job_hours', with: '0.0'
+    find('#add_job_button').click
+
+    expect(page).to have_content 'debe ser mayor que 0'
+  end
+
+  scenario 'delete a job', :js do
+    jobs = [ create(:job, task: @task), create(:job, task: @task) ]
+    job = create(:job, task: @task)
+
+    visit tasks_path
+    click_link subject_short(@task.subject)
+    click_link 'Tiempo dedicado'
+
+    expect(page).to have_content total_hours_str(@task.jobs)
+
+    find("#job_#{job.id} a.text-danger").click
+
+    expect(page).to have_content total_hours_str(jobs)
+  end
+
 end
