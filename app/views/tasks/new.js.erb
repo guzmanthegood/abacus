@@ -1,3 +1,1 @@
-$("#tasks-title").html("Nueva tarea");
-$("#tasks-tools").html("");
-$("#tasks-body").html("<%= escape_javascript(render 'form', task: @task) %>");
+$("#main-frame").html("<%= escape_javascript(render 'new', task: @task) %>");

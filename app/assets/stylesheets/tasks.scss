@@ -60,12 +60,15 @@ body.tasks {
     i:before{content: "\f00d"}
   }
   
-
   /* fix nav-pills active background effect */
   .nav-pills > li.active > a, 
   .nav-pills > li.active > a:hover, 
   .nav-pills > li.active > a:focus {
     background-color: #FFF;
     color: #000;
+  }
+
+  table.index td:nth-child(7) {
+    text-align: right;
   }
 }

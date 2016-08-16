@@ -239,3 +239,6 @@ es:
       only_date: "%d/%m/%Y"
       table: "%Y/%m/%d"
     pm: pm
+  date:
+    formats:
+      default: "%d/%m/%Y"

@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  resources :tasks
   devise_for :users, controllers: { 
   	sessions: 'users/sessions',
   	passwords: 'users/passwords'
  	}
+
+  resources :users
+  get 'profile', to: 'users#show'
 
   resources :projects do
     member do
@@ -14,9 +16,9 @@ Rails.application.routes.draw do
   	end
   end
 
-  resources :users
-  get 'profile', to: 'users#show'
-
+  resources :tasks
+  resources :jobs, only: [:create, :destroy]
+  
   root 'static#home'
   get 'static/example'
   get 'static/home'

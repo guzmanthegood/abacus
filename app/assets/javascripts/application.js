@@ -10,6 +10,8 @@
 //= require adminlte/plugins/select2/select2
 //= require adminlte/plugins/select2/i18n/es
 //= require adminlte/plugins/pace/pace
+//= require adminlte/plugins/input-mask/jquery.inputmask
+//= require adminlte/plugins/input-mask/jquery.inputmask.date.extensions
 //= require bootstrap-wysihtml5
 //= require bootstrap-wysihtml5/locales/es-ES
 //= require_tree .

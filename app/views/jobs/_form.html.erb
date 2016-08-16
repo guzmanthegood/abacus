@@ -1,0 +1,25 @@
+<% performed_at = @job.present? ? (I18n.l @job.performed_at, format: :only_date) : (I18n.l Time.now, format: :only_date)  %>
+
+<%= bootstrap_form_for job, remote: true do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :task_id, value: task.id %>
+
+  <div class='row'>
+    <%= f.text_field :performed_at, hide_label: true, placeholder: 'Fecha: ', value: performed_at,
+                      prepend: "<i class='fa fa-calendar'></i>".html_safe,
+                      wrapper_class: 'col-sm-2', class: 'input-sm' %>
+
+    <%= f.text_field :description, hide_label: true, placeholder: 'Descripción: ', class: 'input-sm', wrapper_class: 'col-sm-7'  %>
+    <%= f.text_field :hours, hide_label: true, placeholder: 'Horas: ', class: 'input-sm', wrapper_class: 'col-sm-2'  %>
+    <div class='form-group col-sm-1'>
+      <%= button_tag type: 'submit', class: 'btn btn-flat btn-sm btn-primary', id: 'add_job_button' do %>
+        <i class='fa fa-plus'></i>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+<hr>
+
+<script type="text/javascript">
+  $("#job_performed_at").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+</script>
