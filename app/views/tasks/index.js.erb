@@ -1,2 +1,3 @@
 $("#main-frame").html("<%= escape_javascript(render 'index', tasks: @tasks) %>");
 status_active("<%= params[:status] %>");
+init_tasks_datatable();

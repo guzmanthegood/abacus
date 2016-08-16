@@ -1,4 +1,4 @@
-<table class="table table-bordered table-hover index">
+<table class="table table-bordered table-hover index tasks datatable">
   <thead>
     <tr>
       <th><input type="checkbox"></th>
@@ -16,16 +16,5 @@
   </tbody>
 </table>
 <script type="text/javascript">
-  $('table.index').DataTable({
-    "order": [[ 1, 'asc' ]],
-    "lengthChange": false,
-    "autoWidth": false,
-    "pageLength": 15,
-    "columnDefs": [
-      { "orderable": false, "targets": 0 },
-      { "width": "10px", "targets": [0,1,2,3,6,7] },
-      { "type": "num", "targets": [1, 6] },
-      { "type": "date", "targets": [7] }
-    ]
-  });
+
 </script>
