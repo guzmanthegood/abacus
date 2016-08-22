@@ -7,14 +7,9 @@ Rails.application.routes.draw do
   resources :users
   get 'profile', to: 'users#show'
 
-  resources :projects do
-    member do
-      put :current
-    end
-  	collection do
-  		post :current
-  	end
-  end
+  resources :projects
+  post 'projects/current', to: 'projects#current', as: :current_project
+
 
   resources :tasks
   resources :jobs, only: [:create, :destroy]
