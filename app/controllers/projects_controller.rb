@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
 
   def current
     current_user.update(current_project: @project)
-    redirect_to project_path(@project), notice: "Proyecto #{@project.name} seleccionado"
+    redirect_to current_project_path, notice: "Proyecto #{@project.name} seleccionado"
   end
 
   def create
@@ -43,7 +43,7 @@ class ProjectsController < ApplicationController
 
   private
     def set_project
-      @project = Project.find(params[:id])
+      @project = current_user.current_project || Project.find(params[:id])
     end
 
     def project_params

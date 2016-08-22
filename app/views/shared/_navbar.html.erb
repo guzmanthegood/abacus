@@ -17,7 +17,7 @@
       <!-- Profile right menu -->
       <ul class="nav navbar-nav">
         <li>
-          <%= bootstrap_form_tag url: current_project_path, html: {id: 'current_project_form'} do |f|  %>
+          <%= bootstrap_form_tag url: set_current_project_path, html: {id: 'current_project_form'} do |f|  %>
             <%= f.select :id, options_for_projects(current_user.current_project), 
                         { hide_label: true, include_blank: true }, 
                         { class: 'form-control select2', placeholder: 'Ir al proyecto', wrapper_class: 'project-select', id: 'current_project_select' } %>

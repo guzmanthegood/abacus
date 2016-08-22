@@ -13,7 +13,7 @@ RSpec.describe ProjectsController, :type => :controller do
 
       post :current, params: { id: projects.first.id }
       
-      expect(response).to redirect_to(project_path(projects.first))
+      expect(response).to redirect_to(current_project_path)
       expect(flash[:notice]).to eq "Proyecto #{projects.first.name} seleccionado"
     end
   end

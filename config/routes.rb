@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   resources :users
   get 'profile', to: 'users#show'
 
-  resources :projects
-  post 'projects/current', to: 'projects#current', as: :current_project
+  resources :projects, except: [:show]
+  get 'projects/current',       to: 'projects#show',    as: :current_project
+  get 'projects/current/edit',  to: 'projects#edit',    as: :edit_current_project
+  post 'projects/current',      to: 'projects#current', as: :set_current_project
 
 
   resources :tasks

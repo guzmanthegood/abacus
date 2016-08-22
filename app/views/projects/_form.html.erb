@@ -7,7 +7,7 @@
   <%= f.submit class: 'btn btn-primary' %>
 
   <% if project.id != nil %>
-  	<%= link_to('<i class="fa fa-hand-o-right"></i> Seleccionar proyecto'.html_safe, current_project_path(id: project.id), method: :post, class: "btn btn-success") %>
+  	<%= link_to('<i class="fa fa-hand-o-right"></i> Seleccionar proyecto'.html_safe, set_current_project_path(id: project.id), method: :post, class: "btn btn-success") %>
 
   	<%= link_to('<i class="fa fa-trash-o"></i> Eliminar proyecto'.html_safe, project_path(project), 
   								method: :delete, data: { confirm: '¿Seguro?' }, 
