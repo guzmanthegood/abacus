@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+document.addEventListener("turbolinks:load", function() {
   bind_select_current_project();
   bind_select2();
   bind_auto_dismissible();
